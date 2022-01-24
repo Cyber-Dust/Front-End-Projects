@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- alert(); in JS sends pop up to browser -->
+
+<head>
+    <title>Dasean Volk</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Comfortaa:wght@300&family=Libre+Caslon+Text:wght@700&family=Marck+Script&family=Ubuntu:ital,wght@1,300&display=swap');
+    </style>
+    <!-- <link rel="stylesheet" href="reset.css"> -->
+</head>
+
+<body>
+    <div id="main">
+        <header>Dasean Volk | Student Page</header>
+        <!-- <img src="IMG/kisspng-university-of-southern-california-usc-trojans-men-mba-bebeyond-5b7b6e7bc57c64.0695097115348158678089.jpg" alt="USC"> -->
+        <h2>dvolk@usc.edu</h2>
+
+        <button>Favorite Color</button>
+    </div>
+    <div id="display">
+        <div id="assignments">
+            <div id="alist">
+                <h2>ASSIGNMENTS:</h2>
+                <a href="">Assignment 1: JS Photo Galllery</a>
+            </div>
+
+        </div>
+        <div id="labs">
+            <div id="lablist">
+                <h2>LABS:</h2>
+                <a href="student_page.html">Lab 1: Student Page</a>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // EVENT: Change Background Color Button Click
+    document.querySelector('button').onclick = function() {
+            document.querySelector('body').style.backgroundColor = '#0d3ecc';
+        }
+        // EVENT: Hover over Button
+        // document.querySelector('button').onmouseenter = function() {
+        //     document.querySelector('button').style.backgroundColor = 'linear-gradient( 45deg, #25a5e6, #0d3ecc);';
+        // }
+</script>
+
+</html>

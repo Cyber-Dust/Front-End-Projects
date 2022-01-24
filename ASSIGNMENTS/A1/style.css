@@ -1,0 +1,113 @@
+html {
+    width: 100%;
+    height: auto;
+}
+
+#master {
+    /* margin-left: auto;
+    margin-right: auto;
+    width: 800px; */
+}
+
+body {
+    /* Use cover to encompass entire background fill */
+    text-align: center;
+    background: url(IMG/layered-waves-haikei.svg) no-repeat;
+    background-size: cover;
+}
+
+header {
+    font-size: 4em;
+    font-family: 'Press Start 2P', cursive;
+    color: #49fb35;
+    background-color: #666666;
+    text-shadow: 1px 4px 4px rgb(236, 64, 170);
+    text-align: center;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+}
+
+#featured {
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+}
+
+#mainpic {
+    width: 800px;
+    height: 1000px;
+    margin: auto;
+}
+
+#mainpic:hover {
+    cursor: pointer;
+}
+
+#carousel {
+    display: flex;
+    margin: auto;
+    width: 300px;
+    height: 350px;
+    justify-content: space-evenly;
+    padding: 50px;
+}
+
+#RE4 {
+    padding: 50px;
+}
+
+#RE4:hover {
+    cursor: pointer;
+    opacity: 40%;
+    transform: translateY(-10px);
+}
+
+#S2 {
+    padding: 50px;
+}
+
+#S2:hover {
+    cursor: pointer;
+    opacity: 40%;
+    transform: translateY(-10px);
+}
+
+#Mario {
+    padding: 50px;
+}
+
+#Mario:hover {
+    cursor: pointer;
+    opacity: 40%;
+    transform: translateY(-10px);
+}
+
+#CODBO {
+    padding: 50px;
+}
+
+#CODBO:hover {
+    cursor: pointer;
+    opacity: 40%;
+    transform: translateY(-10px);
+}
+
+#Halo3 {
+    padding: 50px;
+}
+
+#Halo3:hover {
+    cursor: pointer;
+    opacity: 40%;
+    transform: translateY(-10px);
+}
+
+#NFSU2 {
+    padding: 50px;
+}
+
+#NFSU2:hover {
+    cursor: pointer;
+    opacity: 40%;
+    transform: translateY(-10px);
+}

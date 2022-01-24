@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1: JS Photo Galllery</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Comfortaa:wght@300&family=Libre+Caslon+Text:wght@700&family=Marck+Script&family=Press+Start+2P&family=Ubuntu:ital,wght@1,300&display=swap');
+    </style>
+</head>
+
+<body>
+    <div id="master">
+        <header>
+            <h1>My Favorite Video Games Gallery</h1>
+        </header>
+        <div id="featured">
+            <!-- Main Pic Once Clicked -->
+            <img id="mainpic" src="IMG/71525-resident-evil-4-playstation-2-front-cover.jpg" alt="Game1">
+        </div>
+        <div id="carousel">
+            <!--  Pictures of my Fav Video Games -->
+            <img id="RE4" src="IMG/71525-resident-evil-4-playstation-2-front-cover.jpg" alt="Game1">
+            <img id="S2" src="IMG/151110-skate-2-xbox-360-front-cover.jpg" alt="Game2">
+            <img id="Mario" src="IMG/super-mario-bros-cover.cover_large.jpg" alt="Game3">
+            <img id="CODBO" src="IMG/game-steam-call-of-duty-black-ops-cover.jpg" alt="Game4">
+            <img id="Halo3" src="IMG/Halo3coverart.JPG.jpg" alt="Game5">
+            <img id="NFSU2" src="IMG/NFSU2_Boxart.jpg" alt="Game6">
+        </div>
+    </div>
+    <script>
+        // Resident Evil
+        document.querySelector('#mainpic').onclick = function() {
+            document.querySelector('#mainpic').src = "IMG/71525-resident-evil-4-playstation-2-front-cover.jpg";
+            document.querySelector('#mainpic').alt = "Game1";
+        }
+        document.querySelector('#RE4').onclick = function() {
+                document.querySelector('#mainpic').src = "IMG/71525-resident-evil-4-playstation-2-front-cover.jpg";
+                document.querySelector('#mainpic').alt = "Game1";
+            }
+            // Skate 2
+        document.querySelector('#S2').onclick = function() {
+                document.querySelector('#mainpic').src = "IMG/151110-skate-2-xbox-360-front-cover.jpg";
+                document.querySelector('#mainpic').alt = "Game2";
+            }
+            // Mario
+        document.querySelector('#Mario').onclick = function() {
+                document.querySelector('#mainpic').src = "IMG/super-mario-bros-cover.cover_large.jpg";
+                document.querySelector('#mainpic').alt = "Game3";
+            }
+            // COD
+        document.querySelector('#CODBO').onclick = function() {
+                document.querySelector('#mainpic').src = "IMG/game-steam-call-of-duty-black-ops-cover.jpg";
+                document.querySelector('#mainpic').alt = "Game4";
+            }
+            // Halo 3
+        document.querySelector('#Halo3').onclick = function() {
+                document.querySelector('#mainpic').src = "IMG/Halo3coverart.JPG.jpg";
+                document.querySelector('#mainpic').alt = "Game5";
+            }
+            // Need For Speed
+        document.querySelector('#NFSU2').onclick = function() {
+            document.querySelector('#mainpic').src = "IMG/NFSU2_Boxart.jpg";
+            document.querySelector('#mainpic').alt = "Game6";
+        }
+    </script>
+</body>
+
+</html>
