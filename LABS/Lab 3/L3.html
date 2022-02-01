@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&family=Orbitron:wght@900&display=swap');
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1>SNEAKER SWAP</h1>
+    </div>
+    <div id="main">
+        <div id="shoes">
+            <div class="nike">
+                <img id="Mag" src="IMG/1.jpg" alt="future shoes">
+                <p>Nike Adapt BB 2.0</p>
+                <h2>$ <span id="magcost">396</span></h2>
+            </div>
+
+            <div class="yzy">
+                <img id="yeezys" src="IMG/152603_01.jpg.jpeg" alt="knitted shoes">
+                <div id="yprice">
+                    <p>YZY BOOST 350</p>
+                    <h2>$ <span id="yzycost">326</span></h2>
+                </div>
+            </div>
+            <div class="jordan">
+                <img id="jordan4" src="IMG/download.jpg" alt="borwn shoes">
+                <p>Air Jordan 4</p>
+                <h2>$ <span id="jordancost">240</span></h2>
+            </div>
+        </div>
+        <div id="Cart">
+            <div id="funds">
+                <label id="funded">Remaining Funds: $<span id="bl">0</span></label>
+                <br>
+                <label for="name">$</label>
+                <input type="text" id="remaining" name="$">
+                <button id="skrilla">Disperse Funds</button>
+            </div>
+            <div id="subtotal">
+                <h4>Cart Subtotal:</h4>
+                <hr>
+                <h3>$
+                    <span id="total">0</span>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <h5>&#169; 2022 Dasean Volk | University of Southern California</h5>
+    </footer>
+    <script>
+        // WORKFLOW
+        // Display remaining balance with starting amount of 0.
+        // Include $ in front of the value.
+        // Create an input field for users to enter an amount to add.
+        // Create a button for the input field above.
+        // When users click on this button:
+        // Add the amount specified to user’s remaining balance,
+        // Clear the input field.
+        // When users click on a product, update the subtotal and remaining balance with appropriate values.
+        // If the price of a product exceeds the user's remaining balance, show “Insufficient funds” (or similar) message either in an alert box or HTML.
+
+        // set balance to 0 and hold in a global variable
+        var balance = 0
+            // create event for 'skrilla' button
+        document.querySelector('#skrilla').onclick = function() {
+            // Use .value for CSS
+            var money = parseInt(document.querySelector('#remaining').value);
+            // add the users money input to the 'remaining' field
+            balance += money;
+            // update the remaining balance HTML
+            document.querySelector('#bl').innerHTML = balance;
+            // Clear the input field
+            document.querySelector('#remaining').value = '';
+        }
+
+        var subtotal = document.querySelector('#total').innerHTML;
+        subtotal = parseInt(subtotal);
+        // Esablish function
+        document.querySelector('#Mag').onclick = function() {
+                // Create local variable to get price from the clicked shoe
+                var shoe = parseInt(document.querySelector('#magcost').innerHTML);
+
+                // conditional that checks if the purchase is possible conisdering the funds that are available
+                if (shoe <= balance) {
+                    // Add the cost to the total
+                    subtotal += shoe;
+                    // subtract balance from the total
+                    balance -= shoe;
+                    // update remaining balance integer
+                    document.querySelector('#bl').innerHTML = balance;
+                    // Configure subtotal
+                    document.querySelector('#total').innerHTML = subtotal;
+                    // else statement that alerts user that they need more money
+                } else {
+                    alert("Insufficient Funds. Please make more money.")
+                }
+            }
+            // Esablish function
+        document.querySelector('#yeezys').onclick = function() {
+                // Create local variable to get price from the clicked shoe
+                var shoe = parseInt(document.querySelector('#yzycost').innerHTML);
+                // conditional that checks if the purchase is possible conisdering the funds that are available
+                if (shoe <= balance) {
+                    // Add the cost to the total
+                    subtotal += shoe;
+                    // subtract balance from the total
+                    balance -= shoe;
+                    // update remaining balance integer
+                    document.querySelector('#bl').innerHTML = balance;
+                    // Configure subtotal
+                    document.querySelector('#total').innerHTML = subtotal;
+                    // else statement that alerts user that they need more money
+                } else {
+                    alert("Insufficient Funds. Please make more money.")
+                }
+            }
+            // Esablish function
+        document.querySelector('#jordan4').onclick = function() {
+            // Create local variable to get price from the clicked shoe
+            var shoe = parseInt(document.querySelector('#jordancost').innerHTML);
+            // conditional that checks if the purchase is possible conisdering the funds that are available
+            if (shoe <= balance) {
+                // Add the cost to the total
+                subtotal += shoe;
+                // subtract balance from the total
+                balance -= shoe;
+                // update remaining balance integer
+                document.querySelector('#bl').innerHTML = balance;
+                // Configure subtotal
+                document.querySelector('#total').innerHTML = subtotal;
+                // else statement that alerts user that they need more money
+            } else {
+                alert("Insufficient Funds. Please make more money.")
+            }
+        }
+    </script>
+</body>
+
+</html>

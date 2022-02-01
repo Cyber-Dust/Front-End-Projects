@@ -1,0 +1,155 @@
+html {}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* USE THE ABOVE CODE WITH A FOOTER MARGIN-TOP OF AUTO
+    FOR A STICKY HEADER */
+    font-family: 'Mitr', sans-serif;
+}
+
+#main {
+    margin-right: auto;
+    margin-left: auto;
+    width: 800px;
+}
+
+#header {
+    text-align: center;
+    background: url(IMG/blurry-gradient-haikei.svg) no-repeat;
+    background-size: cover;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 4px 4px 5px white;
+}
+
+#header h1 {
+    font-size: 5em;
+}
+
+
+/* SHOES */
+
+#shoes {
+    display: flex;
+    margin: auto;
+    justify-content: space-evenly;
+    padding: 50px;
+    text-align: center;
+}
+
+#Mag {
+    width: 300px;
+    height: 200px;
+}
+
+#Mag:hover {
+    opacity: 50%;
+    cursor: pointer;
+}
+
+#jordan4 {
+    width: 300px;
+    height: 200px;
+}
+
+#jordan4:hover {
+    opacity: 50%;
+    cursor: pointer;
+}
+
+#yprice {
+    text-align: center;
+}
+
+#yeezys:hover {
+    opacity: 50%;
+    cursor: pointer;
+}
+
+
+/* CART */
+
+#Cart {
+    /* text-align: center;
+    background: linear-gradient(burlywood, white);
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); */
+}
+
+#subtotal {
+    text-align: center;
+    background: linear-gradient(burlywood, white);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    width: 300px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+#funds {
+    text-align: center;
+    background: linear-gradient(white, burlywood);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    padding-bottom: 15px;
+    padding-top: 10px;
+    width: 300px;
+}
+
+#funded {
+    padding-left: 25px;
+    padding-bottom: 5px;
+    font-size: 1.1em;
+}
+
+#skrilla {
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 15px;
+}
+
+#skrilla:hover {
+    cursor: pointer;
+    color: aliceblue;
+    background-color: black;
+    border-radius: 15px;
+}
+
+#remaining {
+    margin-right: 15px;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+#bl {
+    padding-right: 25px;
+}
+
+#Cart h4 {
+    padding-top: 10px;
+}
+
+#Cart h3 {
+    padding-bottom: 10px;
+}
+
+
+/* FOOTER */
+
+footer {
+    background: url(IMG/blurry-gradient-haikei.svg) no-repeat;
+    background-size: cover;
+    margin-top: auto;
+    text-align: center;
+    font-family: 'Mitr', sans-serif;
+}

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JS Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+    <style>
+        #display {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1 class="col-12 text-center mt-5">JS Calculator</h1>
+        </div>
+        <!-- .row -->
+        <div class="row">
+            <div id="calculator" class="mt-4 col-12 col-md-6 ml-md-auto mr-md-auto col-lg-4">
+                <div class="row">
+                    <input type="text" id="display" class="col-12 text-right form-control" value="0">
+                </div>
+                <!-- .row -->
+                <div class="row">
+                    <button id='ac' class="col-9 btn btn-lg btn-outline-dark">AC</button>
+                    <button id='div' class="col-3 btn btn-lg btn-outline-dark">/</button>
+                </div>
+                <!-- .row -->
+                <div class="row">
+                    <button id='seven' class="col-3 btn btn-lg btn-outline-dark">7</button>
+                    <button id='eight' class="col-3 btn btn-lg btn-outline-dark">8</button>
+                    <button id='nine' class="col-3 btn btn-lg btn-outline-dark">9</button>
+                    <button id='mult' class="col-3 btn btn-lg btn-outline-dark">x</button>
+                </div>
+                <!-- .row -->
+                <div class="row">
+                    <button id='four' class="col-3 btn btn-lg btn-outline-dark">4</button>
+                    <button id='five' class="col-3 btn btn-lg btn-outline-dark">5</button>
+                    <button id='six' class="col-3 btn btn-lg btn-outline-dark">6</button>
+                    <button id='sub' class="col-3 btn btn-lg btn-outline-dark">-</button>
+                </div>
+                <!-- .row -->
+                <div class="row">
+                    <button id='one' class="col-3 btn btn-lg btn-outline-dark">1</button>
+                    <button id='two' class="col-3 btn btn-lg btn-outline-dark">2</button>
+                    <button id='three' class="col-3 btn btn-lg btn-outline-dark">3</button>
+                    <button id='add' class="col-3 btn btn-lg btn-outline-dark">+</button>
+                </div>
+                <!-- .row -->
+                <div class="row">
+                    <button id='zero' class="col-6 btn btn-lg btn-outline-dark">0</button>
+                    <button class="col-3 btn btn-lg btn-outline-dark">.</button>
+                    <button id='equal' class="col-3 btn btn-lg btn-outline-dark">=</button>
+                </div>
+                <!-- .row -->
+            </div>
+            <!-- #calculator -->
+        </div>
+        <!-- .row -->
+    </div>
+    <!-- .container -->
+    <script>
+        // WORKFLOW
+        // 1. User enters a number
+        // 2. User presses an operation button (+, -, *, /):
+        // 		a. Save the 1st number into a global variable
+        // 		b. save the operation into a global variable
+        // 		c. clear the display
+        // 3. Users enter another number
+        // 4. Users press = button:
+        // 		a. IF saved operation is +, add 1st and second together
+        // 		b. ELSE IF saved operation is -, subract 2nd number from the 1st number
+        // 		c. ELSE IF saved operation is *, multiply 1st and second number
+        // 		d. ELSE IF saved operation is /, divide 2nd number from 1st
+        // 		e. Display results to users
+        // NOTES:
+        // AC Button Clears the display and shows zero
+        // Clicking on an integer displays the nuumber
+        // Clicking on an operator clears the display and shows zero
+
+        // 		General user workflow:
+        // User enters the first number (could be multi-digit),
+        // User presses an operation (addition, subtraction, multiplication, or division),
+        // User enters the second number (could be multi-digit),
+        // User presses = button to see the result.===
+        // User presses AC button to clear the display (show 0).===
+
+        // Establish global variables
+        var firstNum;
+        var operation;
+
+        //  AC event to clear display
+        document.querySelector('#ac').onclick = function() {
+            // show 0
+            document.querySelector('#display').value = 0;
+            // reset
+            firstNum = '';
+        }
+
+        // CALCULATOR NUMBERS
+
+        // ZERO
+        document.querySelector('#zero').onclick = function() {
+                // check is display is 0
+                if (document.querySelector('#display').value == '0') {
+                    // set .innerHTML to #zero
+                    document.querySelector('#display').value = document.querySelector('#zero').innerHTML;
+                } else {
+                    document.querySelector('#display').value += document.querySelector('#zero').innerHTML;
+                }
+            }
+            //  ONE
+        document.querySelector('#one').onclick = function() {
+                // check is display is 0
+                if (document.querySelector('#display').value == '0') {
+                    // set .innerHTML to #one
+                    document.querySelector('#display').value = document.querySelector('#one').innerHTML;
+                } else {
+                    // Append number for multidigit integer
+                    document.querySelector('#display').value += document.querySelector('#one').innerHTML;
+                }
+            }
+            //  TWO
+        document.querySelector('#two').onclick = function() {
+                // check is display is 0
+                if (document.querySelector('#display').value == '0') {
+                    // set .innerHTML to #two
+                    document.querySelector('#display').value = document.querySelector('#two').innerHTML;
+                } else {
+                    // Append number for multidigit integer
+                    document.querySelector('#display').value += document.querySelector('#two').innerHTML;
+                }
+            }
+            //  THREE
+        document.querySelector('#three').onclick = function() {
+                // check is display is 0
+                if (document.querySelector('#display').value == '0') {
+                    // set .innerHTML to #three
+                    document.querySelector('#display').value = document.querySelector('#three').innerHTML;
+                } else {
+                    // Append number for multidigit integer
+                    document.querySelector('#display').value += document.querySelector('#three').innerHTML;
+                }
+            }
+            //  FOUR
+        document.querySelector('#four').onclick = function() {
+                // check is display is 0
+                if (document.querySelector('#display').value == '0') {
+                    // set .innerHTML to #four
+                    document.querySelector('#display').value = document.querySelector('#four').innerHTML;
+                } else {
+                    // Append number for multidigit integer
+                    document.querySelector('#display').value += document.querySelector('#four').innerHTML;
+                }
+            }
+            //  FIVE
+        document.querySelector('#five').onclick = function() {
+                // check is display is 0
+                if (document.querySelector('#display').value == '0') {
+                    // set .innerHTML to #five
+                    document.querySelector('#display').value = document.querySelector('#five').innerHTML;
+                } else {
+                    // Append number for multidigit integer
+                    document.querySelector('#display').value += document.querySelector('#five').innerHTML;
+                }
+            }
+            //  SIX
+        document.querySelector('#six').onclick = function() {
+                // check is display is 0
+                if (document.querySelector('#display').value == '0') {
+                    // set .innerHTML to #six
+                    document.querySelector('#display').value = document.querySelector('#six').innerHTML;
+                } else {
+                    // Append number for multidigit integer
+                    document.querySelector('#display').value += document.querySelector('#six').innerHTML;
+                }
+            }
+            //  SEVEN
+        document.querySelector('#seven').onclick = function() {
+                // check is display is 0
+                if (document.querySelector('#display').value == '0') {
+                    // set .innerHTML to #seven
+                    document.querySelector('#display').value = document.querySelector('#seven').innerHTML;
+                } else {
+                    // Append number for multidigit integer
+                    document.querySelector('#display').value += document.querySelector('#seven').innerHTML;
+                }
+            }
+            //  EIGHT
+        document.querySelector('#eight').onclick = function() {
+                // check is display is 0
+                if (document.querySelector('#display').value == '0') {
+                    // set .innerHTML to #eight
+                    document.querySelector('#display').value = document.querySelector('#eight').innerHTML;
+                } else {
+                    // Append number for multidigit integer
+                    document.querySelector('#display').value += document.querySelector('#eight').innerHTML;
+                }
+            }
+            //  NINE
+        document.querySelector('#nine').onclick = function() {
+            // check is display is 0
+            if (document.querySelector('#display').value == '0') {
+                // set .innerHTML to #nine
+                document.querySelector('#display').value = document.querySelector('#nine').innerHTML;
+            } else {
+                // Append number for multidigit integer
+                document.querySelector('#display').value += document.querySelector('#nine').innerHTML;
+            }
+        }
+
+        // OPERATIONS
+        // ADD
+        document.querySelector('#add').onclick = function() {
+                // Save the 1st number into a global variable
+                firstNum = document.querySelector('#display').value;
+                // convert into numerical value
+                firstNum = parseInt(firstNum);
+                // save the operation into a global variable
+                operation = '+';
+                // clear display
+                document.querySelector('#display').value = '';
+            }
+            // SUBTRACT
+        document.querySelector('#sub').onclick = function() {
+                // Save the 1st number into a global variable
+                firstNum = document.querySelector('#display').value;
+                // convert into numerical value
+                firstNum = parseInt(firstNum);
+                // save the operation into a global variable
+                operation = '-';
+                // clear display
+                document.querySelector('#display').value = '';
+            }
+            // MULTIPLY
+        document.querySelector('#mult').onclick = function() {
+                // Save the 1st number into a global variable
+                firstNum = document.querySelector('#display').value;
+                // convert into numerical value
+                firstNum = parseInt(firstNum);
+                // save the operation into a global variable
+                operation = '*';
+                // clear display
+                document.querySelector('#display').value = '';
+            }
+            // DIVIDE
+        document.querySelector('#div').onclick = function() {
+                // Save the 1st number into a global variable
+                firstNum = document.querySelector('#display').value;
+                // convert into numerical value
+                firstNum = parseInt(firstNum);
+                // save the operation into a global variable
+                operation = '/';
+                // clear display
+                document.querySelector('#display').value = '';
+            }
+            // EQUALS
+        document.querySelector('#equal').onclick = function() {
+            // save the number from the user input
+            var secondNum = document.querySelector('#display').value;
+            // record as integer
+            secondNum = parseInt(secondNum);
+            // create a result variable
+            var result;
+            // Conditional statements that concatenate using their respective operator / check what operation variable was saved
+            if (operation == '+') {
+                result = firstNum + secondNum;
+            } else if (operation == '-') {
+                result = firstNum - secondNum;
+            } else if (operation == '*') {
+                result = firstNum * secondNum;
+            } else if (operation == '/') {
+                result = firstNum / secondNum;
+            } else {
+                result = 'Error'
+            }
+            // Display result to users
+            document.querySelector('#display').value = result;
+        }
+    </script>
+</body>
+
+</html>

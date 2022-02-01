@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&family=Orbitron:wght@900&display=swap');
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h1>SNEAKER SWAP</h1>
+    </div>
+    <div id="main">
+        <div id="shoes">
+            <div class="nike">
+                <img id="Mag" src="IMG/1.jpg" alt="future shoes">
+                <p>Nike Adapt BB 2.0</p>
+                <h2>$ <span id="magcost">396</span></h2>
+            </div>
+
+            <div class="yzy">
+                <img id="yeezys" src="IMG/152603_01.jpg.jpeg" alt="knitted shoes">
+                <div id="yprice">
+                    <p>YZY BOOST 350</p>
+                    <h2>$ <span id="yzycost">326</span></h2>
+                </div>
+            </div>
+            <div class="jordan">
+                <img id="jordan4" src="IMG/download.jpg" alt="borwn shoes">
+                <p>Air Jordan 4</p>
+                <h2>$ <span id="jordancost">240</span></h2>
+            </div>
+        </div>
+        <div id="Cart">
+            <h4>Cart Subtotal:</h4>
+            <hr>
+
+            <h3>$
+                <span id="total">0</span></h3>
+        </div>
+    </div>
+    <footer>
+        <h5>&#169; 2022 Dasean Volk | University of Southern California</h5>
+    </footer>
+    <script>
+        // When user clicks on a picture:
+        // Collect users click that is attached to integer and add to subtotal
+        // Create global variable to hold cart
+        var subtotal = document.querySelector('#total').innerHTML;
+        subtotal = parseInt(subtotal);
+        // Esablish function
+        document.querySelector('#Mag').onclick = function() {
+            // Create local variable to get price from the clicked shoe
+            var shoe = parseInt(document.querySelector('#magcost').innerHTML);
+            // Add the cost to the total
+            subtotal = +shoe;
+            // Configure subtotal
+            document.querySelector('#total').innerHTML = subtotal;
+            }
+            // Esablish function
+        document.querySelector('#yeezys').onclick = function() {
+            // Create local variable to get price from the clicked shoe
+            var shoe = document.querySelector('#yzycost').innerHTML;
+            // Add the cost to the total
+            shoe = parseInt(shoe)
+            // Configure subtotal
+            subtotal += shoe;
+            document.querySelector('#total').innerHTML = subtotal;
+            }
+            // Esablish function
+        document.querySelector('#jordan4').onclick = function() {
+            // Create local variable to get price from the clicked shoe
+            var shoe = parseInt(document.querySelector('#jordancost').innerHTML);
+            // Add the cost to the total
+            subtotal += shoe;
+            // Configure subtotal
+            document.querySelector('#total').innerHTML = subtotal;
+            }
+    </script>
+</body>
+
+</html>
