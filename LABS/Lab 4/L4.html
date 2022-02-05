@@ -20,71 +20,49 @@
         <div id="featured">
             <!-- Main Pic Once Clicked -->
             <img id="mainpic" src="IMG/71525-resident-evil-4-playstation-2-front-cover.jpg" alt="Game1">
+            <h2 id="caption">Resident Evil</h2>
         </div>
         <div id="carousel">
             <!--  Pictures of my Fav Video Games -->
-            <img id="RE4" src="IMG/71525-resident-evil-4-playstation-2-front-cover.jpg" alt="Game1">
-            <img id="S2" src="IMG/151110-skate-2-xbox-360-front-cover.jpg" alt="Game2">
-            <img id="Mario" src="IMG/super-mario-bros-cover.cover_large.jpg" alt="Game3">
-            <img id="CODBO" src="IMG/game-steam-call-of-duty-black-ops-cover.jpg" alt="Game4">
-            <img id="Halo3" src="IMG/Halo3coverart.JPG.jpg" alt="Game5">
-            <img id="NFSU2" src="IMG/NFSU2_Boxart.jpg" alt="Game6">
+            <img class="thumbnail" id="RE4" src="IMG/71525-resident-evil-4-playstation-2-front-cover.jpg" alt="Resident Evil 4">
+            <img class="thumbnail" id="S2" src="IMG/151110-skate-2-xbox-360-front-cover.jpg" alt="Skate 2">
+            <img class="thumbnail" id="Mario" src="IMG/super-mario-bros-cover.cover_large.jpg" alt="Super Mario Bros">
+            <img class="thumbnail" id="CODBO" src="IMG/game-steam-call-of-duty-black-ops-cover.jpg" alt="Call of Duty: Black Ops">
+            <img class="thumbnail" id="Halo3" src="IMG/Halo3coverart.JPG.jpg" alt="Halo 3">
+            <img class="thumbnail" id="NFSU2" src="IMG/NFSU2_Boxart.jpg" alt="Need For Speed: Underground 2">
         </div>
     </div>
     <script>
-        // Need to wrap these pictures in functions and tighten length
-
         // WORKFLOW
-        // In addition to that, display the caption for the main image (not thumbnails).
-        // Caption should have the same text as the alternative (alt) text.
+        // 1. display the caption for the main image (not thumbnails).
+        // 2. Caption should have the same text as the alternative (alt) text.
+        // 3. Remove / comment out previous JS code.
+        // 4. Use at least one (1) function with at least one (1) parameter.
 
-        // Remove / comment out previous JS code.
-
-        // Use at least one (1) function with at least one (1) parameter.
-
-        // Create a variable that will store an array of thumbnail images.
-        // Hint: use querySelectorAll() to select thumbnail images.
-
-        // Loop through that array to bind event handlers for each thumbnail image.
-
-        // When users click on a thumbnail:
-        // Update main image to the clicked thumbnail image.
-        // Update main image alternative text to thumbnail’s alternative (alt) text.
-        // Update the caption for the main image to the thumbnail’s alternative (alt) text.
-
-        // Resident Evil
-        document.querySelector('#mainpic').onclick = function() {
-            document.querySelector('#mainpic').src = "IMG/71525-resident-evil-4-playstation-2-front-cover.jpg";
-            document.querySelector('#mainpic').alt = "Game1";
+        // Establish array of images
+        var images = document.querySelectorAll('.thumbnail');
+        // Establish function with one parameter
+        //  When users click on a thumbnail:
+        function myFunction(source, alternative) {
+            // a). Update main image to the clicked thumbnail image.
+            document.querySelector('#mainpic').src = source;
+            //  b). Update main image alternative text to thumbnail’s alternative (alt) text.
+            document.querySelector('#mainpic').alt = alternative;
+            // c.) Update the caption for the main image to the thumbnail’s alternative (alt) text.
+            document.querySelector('#caption').innerHTML = alternative;
         }
-        document.querySelector('#RE4').onclick = function() {
-                document.querySelector('#mainpic').src = "IMG/71525-resident-evil-4-playstation-2-front-cover.jpg";
-                document.querySelector('#mainpic').alt = "Game1";
+
+        // iterate through loop of images
+        for (var i = 0; i < images.length; i++) {
+            // i is set at zero so you can use [i] instead of 0
+            images[i].onclick = function() {
+                // Call function
+                myFunction(this.src, this.alt);
+                // if (document.querySelector('#mainpic').onclick) {
+                //     this.src = images[0].src;
+                //     this.alt = images[0].alt;
+                // }
             }
-            // Skate 2
-        document.querySelector('#S2').onclick = function() {
-                document.querySelector('#mainpic').src = "IMG/151110-skate-2-xbox-360-front-cover.jpg";
-                document.querySelector('#mainpic').alt = "Game2";
-            }
-            // Mario
-        document.querySelector('#Mario').onclick = function() {
-                document.querySelector('#mainpic').src = "IMG/super-mario-bros-cover.cover_large.jpg";
-                document.querySelector('#mainpic').alt = "Game3";
-            }
-            // COD
-        document.querySelector('#CODBO').onclick = function() {
-                document.querySelector('#mainpic').src = "IMG/game-steam-call-of-duty-black-ops-cover.jpg";
-                document.querySelector('#mainpic').alt = "Game4";
-            }
-            // Halo 3
-        document.querySelector('#Halo3').onclick = function() {
-                document.querySelector('#mainpic').src = "IMG/Halo3coverart.JPG.jpg";
-                document.querySelector('#mainpic').alt = "Game5";
-            }
-            // Need For Speed
-        document.querySelector('#NFSU2').onclick = function() {
-            document.querySelector('#mainpic').src = "IMG/NFSU2_Boxart.jpg";
-            document.querySelector('#mainpic').alt = "Game6";
         }
     </script>
 </body>
