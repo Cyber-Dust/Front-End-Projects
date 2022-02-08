@@ -56,22 +56,22 @@
         subtotal = parseInt(subtotal);
         // Esablish function
         document.querySelector('#Mag').onclick = function() {
-            // Create local variable to get price from the clicked shoe
-            var shoe = parseInt(document.querySelector('#magcost').innerHTML);
-            // Add the cost to the total
-            subtotal = +shoe;
-            // Configure subtotal
-            document.querySelector('#total').innerHTML = subtotal;
+                // Create local variable to get price from the clicked shoe
+                var shoe = parseInt(document.querySelector('#magcost').innerHTML);
+                // Add the cost to the total
+                subtotal += shoe;
+                // Configure subtotal
+                document.querySelector('#total').innerHTML = subtotal;
             }
             // Esablish function
         document.querySelector('#yeezys').onclick = function() {
-            // Create local variable to get price from the clicked shoe
-            var shoe = document.querySelector('#yzycost').innerHTML;
-            // Add the cost to the total
-            shoe = parseInt(shoe)
-            // Configure subtotal
-            subtotal += shoe;
-            document.querySelector('#total').innerHTML = subtotal;
+                // Create local variable to get price from the clicked shoe
+                var shoe = document.querySelector('#yzycost').innerHTML;
+                // Add the cost to the total
+                shoe = parseInt(shoe)
+                    // Configure subtotal
+                subtotal += shoe;
+                document.querySelector('#total').innerHTML = subtotal;
             }
             // Esablish function
         document.querySelector('#jordan4').onclick = function() {
@@ -81,7 +81,7 @@
             subtotal += shoe;
             // Configure subtotal
             document.querySelector('#total').innerHTML = subtotal;
-            }
+        }
     </script>
 </body>
 

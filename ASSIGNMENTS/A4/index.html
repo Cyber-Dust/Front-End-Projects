@@ -6,10 +6,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liar's Dice</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div id="header">
+        <h1>Liar's Dice</h1>
+    </div>
+    <section id="input">
+        <div id="input">
+            <label for="guess">Your Guess:</label>
+            <input type="text" id="guess" name="guess">
+            <input type="submit" id="click" value="Submit">
+        </div>
+    </section>
+    <section id="results">
+        <h2>RESULTS:</h2>
+        <div id="dice">
+            <img id="d1" src="dice_images/dice_images/1.png" alt="one">
+            <img id="d2" src="dice_images/dice_images/2.png" alt="two">
+            <img id="d3" src="dice_images/dice_images/3.png" alt="three">
+            <img id="d4" src="dice_images/dice_images/4.png" alt="four">
+            <img id="d5" src="dice_images/dice_images/5.png" alt="five">
+            <img id="d6" src="dice_images/dice_images/6.png" alt="six">
+        </div>
+    </section>
+    <footer>
+        <h5>&#169; 2022 Dasean Volk | University of Southern California</h5>
+    </footer>
+    <script>
+        // WORKFLOW
+        // 1. When users click on submit
+        //  a) loop thru number array and populate the empty array with 5 random #s
+        //  b) using math.floor( Math.random() * 6 + 1 ), generate a random integer b/w 1-6
+        //  c) Create images array (or similar) that stores five (5) dice images from the DOM.
+        //              Hint: use querySelectorAll()
+        //  d) loop through images array and set each image to the one that shows the corresponding value stored in numbers array .
+        //  e) if users guessed at least one (1) value correctly, display a success message in green.
+        //      else, display an error / failure message in red.
+        var numbers = [];
 
+        document.querySelector('#click').onclick = function() {
+            numbers += math.floor(Math.random() * 6 + 1);
+            console.log(numbers);
+        }
+    </script>
 </body>
 
 </html>
