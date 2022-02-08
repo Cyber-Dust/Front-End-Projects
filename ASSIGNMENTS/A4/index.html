@@ -7,28 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liar's Dice</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+    </style>
 </head>
 
 <body>
     <div id="header">
         <h1>Liar's Dice</h1>
     </div>
-    <section id="input">
-        <div id="input">
-            <label for="guess">Your Guess:</label>
-            <input type="text" id="guess" name="guess">
-            <input type="submit" id="click" value="Submit">
-        </div>
-    </section>
+    <div id="input">
+        <label for="guess">Your Guess:</label>
+        <input type="text" id="guess" name="guess">
+        <input type="submit" id="click" value="Submit">
+    </div>
     <section id="results">
-        <h2>RESULTS:</h2>
-        <div id="dice">
-            <img id="d1" src="dice_images/dice_images/1.png" alt="one">
-            <img id="d2" src="dice_images/dice_images/2.png" alt="two">
-            <img id="d3" src="dice_images/dice_images/3.png" alt="three">
-            <img id="d4" src="dice_images/dice_images/4.png" alt="four">
-            <img id="d5" src="dice_images/dice_images/5.png" alt="five">
-            <img id="d6" src="dice_images/dice_images/6.png" alt="six">
+        <h2>RESULT: <span id="alert"></span></h2>
+        <div id="dices">
+            <img id="d1" class="roll" src="dice_images/dice_images/1.png" alt="one">
+            <img id="d2" class="roll" src="dice_images/dice_images/2.png" alt="two">
+            <img id="d3" class="roll" src="dice_images/dice_images/3.png" alt="three">
+            <img id="d4" class="roll" src="dice_images/dice_images/4.png" alt="four">
+            <img id="d5" class="roll" src="dice_images/dice_images/5.png" alt="five">
+            <!-- <img id="d6" src="dice_images/dice_images/6.png" alt="six"> -->
         </div>
     </section>
     <footer>
@@ -44,11 +45,40 @@
         //  d) loop through images array and set each image to the one that shows the corresponding value stored in numbers array .
         //  e) if users guessed at least one (1) value correctly, display a success message in green.
         //      else, display an error / failure message in red.
-        var numbers = [];
+
+        // function: result of submit 
+        // parameter: message to user
+        function result(message) {
+            // use #alert to magically display after RESULT:
+            document.querySelector('#alert').innerHTML = message;
+        }
 
         document.querySelector('#click').onclick = function() {
-            numbers += math.floor(Math.random() * 6 + 1);
-            console.log(numbers);
+            // empty array of numbers
+            var integers = [];
+            // loop thru number array and populate the empty array with 5 random #s
+            for (var i = 0; i < 5; i++) {
+                // use Math.floor( Math.random() * 6 + 1 )
+                integers[i] = Math.floor(Math.random() * 6 + 1);
+            }
+            // Create images array (or similar) that stores five (5) dice images from the DOM.
+            var images = document.querySelectorAll('.roll');
+            // loop through images array and set each image to the one that shows the corresponding value stored in numbers array
+            for (var i = 0; i < images.length; i++) {
+                // use integers array to concatenate with dice_images/dice_images/ src and .png image type
+                images[i].src = 'dice_images/dice_images/' + integers[i] + '.png';
+            }
+            // if users guessed at least one (1) value correctly, display a success message
+            var guess = parseInt(document.querySelector('#guess').value);
+            // use integers.indexOf(guess) to locate in the array for a valid #
+            if (integers.indexOf(guess) > -1) {
+                result('SUCCESS')
+                document.querySelector('#alert').style.color = '#0bf440';
+                // else, display an error / failure message
+            } else {
+                result('TRY AGAIN')
+                document.querySelector('#alert').style.color = '#f2120d';
+            }
         }
     </script>
 </body>

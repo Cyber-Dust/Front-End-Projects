@@ -2,10 +2,65 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1000px;
 }
 
 footer {
     background-size: cover;
     margin-top: auto;
     text-align: center;
+}
+
+#header {
+    text-align: center;
+}
+
+#input {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+#dices {
+    text-align: center;
+}
+
+#alert {
+    font-family: 'Russo One', sans-serif;
+}
+
+#d1,
+#d2,
+#d3,
+#d4,
+#d5 {
+    border-radius: 40px;
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: initial;
+    animation-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#click {
+    background-color: rgb(16, 13, 201);
+    color: azure;
+}
+
+#click:hover {
+    cursor: pointer;
+    opacity: 40%;
+    transform: translateY(-1px);
 }
