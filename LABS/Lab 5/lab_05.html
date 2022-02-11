@@ -57,7 +57,7 @@
 
         document.querySelector('#pass-input').oninput = function() {
             var validForm = true;
-            var password = this.value;
+            var password = this.value.trim();
 
             // password cannot be empty
             if (password.length == 0) {
