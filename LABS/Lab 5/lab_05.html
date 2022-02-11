@@ -71,9 +71,27 @@
             } else {
                 document.querySelector('#length').style.background = '#E00';
             }
+            // Must have at least @ or #
+            if (password.indexOf('@') == -1 && (password.indexOf('#') == -1)) {
+                document.querySelector('#special').style.background = '#E00';
+            } else {
+                document.querySelector('#special').style.background = '#0B0';
+            }
+            // Must contain upper and lowercase
+            if (password != password.toLowerCase() && password != password.toUpperCase()) {
+                document.querySelector('#case').style.background = '#0B0';
+            } else {
+                document.querySelector('#case').style.background = '#E00';
+            }
+            // Cannot contain word 'pass' (case sensitive)
+            // Need to fix THIS
+            if (password.indexOf('pass')) {
+                document.querySelector('#pass').style.background = '#0B0';
+            } else {
+                document.querySelector('#pass').style.background = '#E00';
+            }
         }
     </script>
-
 </body>
 
 </html>
