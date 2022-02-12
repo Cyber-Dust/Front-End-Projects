@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -29,7 +29,7 @@
         <div class="row mt-5">
             <div class="col-12 col-sm-5">
                 <h3 class="mb-4">Password:</h3>
-                <input type="text" name="" id="pass-input" class="form-control">
+                <input type="text" id="pass-input" class="form-control">
             </div>
 
             <div class="col-12 col-sm-7">
@@ -85,7 +85,7 @@
             }
             // Cannot contain word 'pass' (case sensitive)
             // Need to fix THIS
-            if (password.indexOf('pass')) {
+            if (password.indexOf('pass') == -1) {
                 document.querySelector('#pass').style.background = '#0B0';
             } else {
                 document.querySelector('#pass').style.background = '#E00';
