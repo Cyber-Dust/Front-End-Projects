@@ -14,8 +14,9 @@ h1 {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
-    margin: auto;
+    /* margin: auto; */
     text-align: center;
+    /* justify-content: space-between, space-evenly, space-around; */
 }
 
 
@@ -24,11 +25,43 @@ h1 {
 
 /* Email Form */
 
+#email {
+    margin: 25px;
+}
+
 
 /* Phone Form */
+
+#phone {
+    margin-top: 30px;
+    margin: 25px;
+}
 
 
 /* Message Form */
 
+#message {
+    /* display: flex;
+    align-items: flex-start; */
+    width: 100%;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
 
 /* Submit Button */
+
+#submit {
+    text-align: center;
+}
+
+
+/* Terms */
+
+#terms {
+    margin: 25px;
+}
+
+#asteriks {
+    color: red;
+}
