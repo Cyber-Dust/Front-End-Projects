@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Form</title>
     <link rel="stylesheet" href="style.css">
+    <!-- STILL NEEDS CHARCTER COUNTER, CSS CLEAN UP, AND EMAIL OR PHONE EVENT -->
 </head>
 
 <body>
@@ -31,6 +32,7 @@
                 <div id="one">
                     <h2>Provide One:<span id="asteriks">*</span></h2>
                 </div>
+                <hr>
                 <div id="two">
                     <div id="email">
                         <label for="email">Email: </label>
@@ -44,7 +46,8 @@
                 </div>
             </div>
             <div id="message">
-                <label for="subject" id="msg">Message:<span id="asteriks">*</span></label>
+                <h5>Message:<span id="asteriks">*</span></h5>
+                <label for="subject" id="msg"></label>
                 <textarea id="subject" name="message" placeholder="Write something.." style="height:200px" minlength:0 maxlength:500></textarea>
                 <p><span id="zero">0</span>/<span id="counter">500</span></p>
                 <small id="message-error"></small>
@@ -68,12 +71,24 @@
 <script>
     // <!-- Below the Message box, display the number of characters entered out of 500. -->
     //     <!-- USE ONINPUT TYPE MAPPING -->
+
     document.querySelector('#subject').oninput = function() {
-        this.value = document.querySelector('#counter');
+        var characters = document.querySelector('#subject').value;
+        document.querySelector('#zero').innerHTML = characters.length;
+
+        if (characters.length > 500) {
+            document.querySelector('#message-error').innerHTML = 'Message cannot exceed 500 characters.';
+            document.querySelector('#counter').style.color = '#E00';
+            document.querySelector('#message-error').style.color = '#E00';
+        } else {
+            document.querySelector('#counter').style.color = '#000000';
+            document.querySelector('#message-error').innerHTML = ' ';
+        }
     }
 
     document.querySelector('#contact-form').onsubmit = function() {
         // Establish global variables
+
         var validForm = true;
 
         var fullname = document.querySelector('#fname').value.trim();
@@ -99,13 +114,13 @@
         // EMAIL & PHONE
         // Email must have ‘@’ character.
         // Either email or phone number must be provided.
-        if (email.indexOf('@') == -1) {
-            validForm = false;
-            document.querySelector('#email-error').innerHTML = 'Invalid email.';
-            document.querySelector('#email-error').style.color = '#E00';
-        } else if (email.length && phone.length == 0) {
+        if (email.length == 0 && phone.length == 0) {
             validForm = false;
             document.querySelector('#email-error').innerHTML = 'You must provide either email or phone.';
+            document.querySelector('#email-error').style.color = '#E00';
+        } else if (email.indexOf('@') == -1) {
+            validForm = false;
+            document.querySelector('#email-error').innerHTML = 'Invalid email.';
             document.querySelector('#email-error').style.color = '#E00';
         } else {
             document.querySelector('#email-error').innerHTML = ' ';

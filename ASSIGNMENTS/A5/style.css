@@ -4,6 +4,8 @@ body {
     margin-right: auto;
     margin-left: auto;
     width: 800px;
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
@@ -16,11 +18,26 @@ h1 {
     padding: 20px;
     /* margin: auto; */
     text-align: center;
+    display: flex;
+    margin: auto;
+    justify-content: space-evenly;
     /* justify-content: space-between, space-evenly, space-around; */
 }
 
 
 /* Name Form */
+
+#mid {
+    display: flex;
+    margin: auto;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+#name {
+    /* margin-left: 123px; */
+    margin-bottom: 10px;
+}
 
 
 /* Email Form */
@@ -37,6 +54,11 @@ h1 {
     margin: 25px;
 }
 
+#one {
+    padding-top: 20px;
+    margin-right: 10px;
+}
+
 
 /* Message Form */
 
@@ -46,6 +68,23 @@ h1 {
     width: 100%;
     resize: vertical;
     box-sizing: border-box;
+}
+
+p {
+    margin-top: 0px;
+}
+
+#msg {
+    margin-bottom: 30px;
+}
+
+#subject {
+    /* margin-left: 125px; */
+    width: 300px;
+}
+
+h5 {
+    margin-bottom: 0px;
 }
 
 
