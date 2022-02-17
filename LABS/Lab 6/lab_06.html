@@ -44,15 +44,31 @@
         <!-- .row -->
     </div>
     <!-- .container-fluid -->
-    <scipt>
-        <!-- Create .oninput event on #pass-input
-				1. if #pass-input is blank, change background to red
-				2. else change background to red -->
-        <!--	3. Must contain at least 5 characters
-				4. must have at least @ or #
-				5. must contain upper and lower case letters
-				6. cannot contain word 'pass' case sensitive (.toLowerCase) -->
-    </scipt>
+    <script>
+        // 					<!-- WORKFLOW -->
+        //  Create .oninput event on #pass-input
+        // 	1. if #pass-input is blank, change background to red
+        // 	2. else change background to red 
+        // 	3. Must contain at least 5 characters
+        // 	4. must have at least @ or #
+        // 	5. must contain upper and lower case letters
+        // 	6. cannot contain word 'pass' case sensitive (.toLowerCase) \
+
+        document.querySelector('#pass-input').oninput = function() {
+            var input = this.value.trim();
+            if (/^$/.test(input)) {
+                document.getElementsByClassName('rules')[0].style.color = '#E00';
+            } else {
+                document.getElementsByClassName('rules')[0].style.color = '#0B0';
+            }
+
+            if (/\d{5}/.test(input)) {
+                document.getElementsByClassName('rules')[1].style.color = '#E00';
+            } else {
+                document.getElementsByClassName('rules')[1].style.color = '#0B0';
+            }
+        }
+    </script>
 </body>
 
 </html>
