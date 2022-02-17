@@ -1,44 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Password Validator</title>
+    <title>Password Validator</title>
 
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
 
-	<style>
-		.rules {
-			background-color: #FF0;
-			margin:	10px 0px;
-			padding: 10px;
-		}
-	</style>
+    <style>
+        .rules {
+            background-color: #FF0;
+            margin: 10px 0px;
+            padding: 10px;
+        }
+    </style>
 </head>
+
 <body>
 
-	<div class="container-fluid">
-		<div class="row">
-			<h1 class="col-12 text-center mt-5">Password Validator</h1>
-		</div> <!-- .row -->
+    <div class="container-fluid">
+        <div class="row">
+            <h1 class="col-12 text-center mt-5">Password Validator</h1>
+        </div>
+        <!-- .row -->
 
-		<div class="row mt-5">
-			<div class="col-12 col-sm-5">
-				<h3 class="mb-4">Password:</h3>
-				<input type="text" name="" id="pass-input" class="form-control">
-			</div>
+        <div class="row mt-5">
+            <div class="col-12 col-sm-5">
+                <h3 class="mb-4">Password:</h3>
+                <input type="text" name="" id="pass-input" class="form-control">
+            </div>
 
-			<div class="col-12 col-sm-7">
-				<h3 class="mb-4">Validation Rules:</h3>
-				<div class="rules">1: Cannot be empty/blank.</div>
-				<div class="rules">2: Must contain at least 5 characters.</div>
-				<div class="rules">3: Must have at least one special character @ or #.</div>
-				<div class="rules">4: Must contain upper AND lower case characters.</div>
-				<div class="rules">5: Cannot contain word 'pass' (case insensitive).</div>
-			</div>
-		</div> <!-- .row -->
-	</div> <!-- .container-fluid -->
-
+            <div class="col-12 col-sm-7">
+                <h3 class="mb-4">Validation Rules:</h3>
+                <div class="rules">1: Cannot be empty/blank.</div>
+                <div class="rules">2: Must contain at least 5 characters.</div>
+                <div class="rules">3: Must have at least one special character @ or #.</div>
+                <div class="rules">4: Must contain upper AND lower case characters.</div>
+                <div class="rules">5: Cannot contain word 'pass' (case insensitive).</div>
+            </div>
+        </div>
+        <!-- .row -->
+    </div>
+    <!-- .container-fluid -->
+    <scipt>
+        <!-- Create .oninput event on #pass-input
+				1. if #pass-input is blank, change background to red
+				2. else change background to red -->
+        <!--	3. Must contain at least 5 characters
+				4. must have at least @ or #
+				5. must contain upper and lower case letters
+				6. cannot contain word 'pass' case sensitive (.toLowerCase) -->
+    </scipt>
 </body>
+
 </html>
