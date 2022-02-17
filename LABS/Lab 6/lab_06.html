@@ -55,18 +55,39 @@
         // 	6. cannot contain word 'pass' case sensitive (.toLowerCase) \
 
         document.querySelector('#pass-input').oninput = function() {
+
             var input = this.value.trim();
+
             if (/^$/.test(input)) {
                 document.getElementsByClassName('rules')[0].style.color = '#E00';
             } else {
                 document.getElementsByClassName('rules')[0].style.color = '#0B0';
             }
 
-            if (/\d{5}/.test(input)) {
-                document.getElementsByClassName('rules')[1].style.color = '#E00';
-            } else {
+            if (/.{5,}/.test(input)) {
                 document.getElementsByClassName('rules')[1].style.color = '#0B0';
+            } else {
+                document.getElementsByClassName('rules')[1].style.color = '#E00';
             }
+
+            if (/[@.#]/.test(input)) {
+                document.getElementsByClassName('rules')[2].style.color = '#0B0';
+            } else {
+                document.getElementsByClassName('rules')[2].style.color = '#E00';
+            }
+
+            if (/[a-z]/.test(input) && /[A-Z]/.test(input)) {
+                document.getElementsByClassName('rules')[3].style.color = '#0B0';
+            } else {
+                document.getElementsByClassName('rules')[3].style.color = '#E00';
+            }
+
+            if (/pass/i.test(input)) {
+                document.getElementsByClassName('rules')[4].style.color = '#E00';
+            } else {
+                document.getElementsByClassName('rules')[4].style.color = '#0B0';
+            }
+
         }
     </script>
 </body>
