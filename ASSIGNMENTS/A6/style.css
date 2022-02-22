@@ -1,0 +1,9 @@
+hr {
+    width: 88.6rem;
+    border: 0;
+    height: 0.35rem;
+    margin: 3em auto;
+    display: block;
+    background-image: -webkit-linear-gradient(0deg, transparent, var(--yellow), var(--red), var(--pink), var(--purple), var(--blue), transparent);
+    clear: both;
+}
