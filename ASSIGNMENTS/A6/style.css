@@ -1,9 +1,52 @@
-hr {
-    width: 88.6rem;
-    border: 0;
-    height: 0.35rem;
-    margin: 3em auto;
-    display: block;
-    background-image: -webkit-linear-gradient(0deg, transparent, var(--yellow), var(--red), var(--pink), var(--purple), var(--blue), transparent);
-    clear: both;
-}
+ hr {
+     margin-top: 20px;
+     width: 800px;
+ }
+ 
+ h1 {
+     text-align: center;
+ }
+ 
+ #form {
+     margin-top: 10px;
+ }
+ 
+ #registration-form {
+     width: 500px;
+     margin: auto;
+     /* display: block; */
+     border: solid black 5px;
+     border-radius: 10px;
+     text-align: center;
+ }
+ 
+ div {
+     margin-bottom: 10px;
+ }
+ 
+ label {
+     display: inline-block;
+     width: 150px;
+     text-align: right;
+ }
+ 
+ button {
+     border-radius: 10px;
+ }
+ 
+ #submit {
+     background-color: blue;
+     color: whitesmoke;
+     margin-right: 10px;
+ }
+ 
+ #data-output {
+     text-align: center;
+ }
+ 
+ p {
+     display: block;
+     width: 150px;
+     text-align: right;
+     margin-left: 400px;
+ }

@@ -14,18 +14,106 @@
     <!-- Create body -->
     <!-- Generate CSS -->
     <h1>REGISTRATION FORM</h1>
-    <form>
-        <label>First Name: <input type="text"></label>
-        <label>Last Name: <input type="text"></label>
-        <label>Email: <input type="text"></label>
-        <label>Website: <input type="text"></label>
-        <label>Phone: <input type="text"></label>
-        <label>Password: <input type="text"></label>
-        <input type="submit" value="Submit">
+    <form id="registration-form">
+        <div id="form">
+            <label for="fname">First Name: </label>
+            <input id="fname" type="text" placeholder="Tommy">
+            <br>
+            <small id="fname-error"></small>
+        </div>
+        <div id="lname">
+
+            <label for="lname-input">Last Name: </label>
+            <input id="lname-input" type="text" placeholder="Trojan">
+            <small id="lname-error"></small>
+        </div>
+        <div id="email">
+
+            <label for="email-input">Email: </label>
+            <input id="email-input" type="text" placeholder="ttrojan@usc.edu">
+            <br>
+            <small id="email-error"></small>
+        </div>
+        <div id="website">
+
+            <label for="website-input">Website: </label>
+            <input id="website-input" type="text" placeholder="https://usc.edu">
+            <small id="website-error"></small>
+        </div>
+        <div id="phone">
+
+            <label for="phone-input">Phone: </label>
+            <input id="phone-input" type="text" placeholder="123-123-1234">
+            <small id="phone-error"></small>
+        </div>
+        <div id="pass">
+
+            <label for="password-input">Password: </label>
+            <input id="password-input" type="text" placeholder="••••••••••••••••••••">
+
+            <small id="password-error"></small>
+        </div>
+        <div id="button">
+            <input type="submit" id="submit" value="Submit"><input type="button" value="Reset">
+        </div>
     </form>
     <hr>
-    <h2>DATA OUTPUT</h2>
+    <div id="data-output">
+
+        <h2>DATA OUTPUT</h2>
+        <p>Full Name: <span id="fullname-data"></span></p>
+        <p>Email Prefix: <span id="fullname-data"></span></p>
+        <p>Formatted Phone Number: <span id="fullname-data"></span></p>
+    </div>
+    <script>
+        // WORKFLOW
+        // Using RegEx, validate each input
+
+
+        document.querySelector('#registration-form').onsubmit = function() {
+            var validForm = true;
+            // Establish variables
+            var firstName = document.querySelector('#fname').value.trim();
+
+            // var email = document.querySelector('#email').value.trim();
+            // var phoone = document.querySelector('#phone').value.trim();
+            // var website = document.querySelector('#website').value.trim();
+            // var password = document.querySelector('#password').value.trim();
+
+            if (/^$/.test(firstName)) {
+                validForm = false;
+                document.querySelector('#fname-error').innerHTML = 'First Name Cannot Be Empty.';
+                document.querySelector('#fname-error').style.color = '#E00';
+            } else if (/^[A - Z][a - z]$/.test(firstName)) {
+                validForm = false;
+                document.querySelector('#fname-error').innerHTML = 'Invalid First Name.';
+                document.querySelector('#fname-error').style.color = '#E00';
+            } else {
+
+                document.querySelector('#fname-error').innerHTML = '';
+            }
+            return validForm;
+
+            // Last Name
+            var lastName = document.querySelector('#lname').value.trim();
+            if (/^$/.test(lastName)) {
+                validForm = false;
+                document.querySelector('#lname-error').innerHTML = 'First Name Cannot Be Empty.';
+                document.querySelector('#lname-error').style.color = '#E00';
+            } else if (/^[A - Z][a - z]$/.test(lastName)) {
+                validForm = false;
+                document.querySelector('#lname-error').innerHTML = 'Invalid Last Name.';
+                document.querySelector('#lname-error').style.color = '#E00';
+            } else {
+                document.querySelector('#lname-error').innerHTML = '';
+            }
+
+
+
+        }
+    </script>
 </body>
-<script src="app.js"></script>
+
+
 
 </html>
