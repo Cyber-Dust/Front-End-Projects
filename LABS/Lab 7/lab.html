@@ -1,74 +1,160 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Dynamic Photo Gallery</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<style>
-		.thumbnail {
-			cursor: pointer;
-		}
-		.thumbnail:hover {
-			opacity: 0.8;
-		}
-	</style>
+    <title>Dynamic Photo Gallery</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .thumbnail {
+            cursor: pointer;
+        }
+        
+        .thumbnail:hover {
+            opacity: 0.8;
+        }
+    </style>
 </head>
+
 <body>
-	<div class="container">
-		<div class="row mt-4">
-			<h1 class="col-12">Dynamic Photo Gallery</h1>
-			<div class="col-12 mt-4">
-				<form id="img-form">
-					<div class="form-row">
-						<div class="col-12 mt-2 col-sm-5 mt-sm-0">
-							<label for="img-src" class="sr-only">Image Source:</label>
-							<input type="text" class="form-control" id="img-src" placeholder="Image Source...">
-						</div> <!-- .col -->
-						<div class="col-12 mt-2 col-sm-5 mt-sm-0">
-							<label for="img-alt" class="sr-only">Image Title (alt):</label>
-							<input type="text" class="form-control" id="img-alt" placeholder="Image Title (alt attribute)...">
-						</div> <!-- .col -->
-						<div class="col-12 mt-2 col-sm-auto mt-sm-0">
-							<button role="button" type="submit" class="btn btn-primary">Add</button>
-						</div> <!-- .col -->
-					</div> <!-- .form-row -->
-				</form>
-			</div> <!-- .col -->
-		</div> <!-- .row -->
+    <div class="container">
+        <div class="row mt-4">
+            <h1 class="col-12">Dynamic Photo Gallery</h1>
+            <div class="col-12 mt-4">
+                <form id="img-form">
+                    <div class="form-row">
+                        <div class="col-12 mt-2 col-sm-5 mt-sm-0">
+                            <label for="img-src" class="sr-only">Image Source:</label>
+                            <input type="text" class="form-control" id="img-src" placeholder="Image Source...">
+                        </div>
+                        <!-- .col -->
+                        <div class="col-12 mt-2 col-sm-5 mt-sm-0">
+                            <label for="img-alt" class="sr-only">Image Title (alt):</label>
+                            <input type="text" class="form-control" id="img-alt" placeholder="Image Title (alt attribute)...">
+                        </div>
+                        <!-- .col -->
+                        <div class="col-12 mt-2 col-sm-auto mt-sm-0">
+                            <button role="button" type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                        <!-- .col -->
+                    </div>
+                    <!-- .form-row -->
+                </form>
+            </div>
+            <!-- .col -->
+        </div>
+        <!-- .row -->
 
-		<div class="row">
-			<h2 class="col-12 mt-4">Photo Gallery:</h2>
+        <div class="row">
+            <h2 class="col-12 mt-4">Photo Gallery:</h2>
 
-			<div class="col-10 col-lg-7 ml-auto mr-auto mt-3" id="main-img">
-				<img src="https://admissionblog.usc.edu/files/2016/09/Move-in-day-1024x681.jpg" alt="USC Campus" class="img-fluid">
-				<h4 class="text-center mt-3">Leavey Library</h4>
-			</div> <!-- .col -->
+            <div class="col-10 col-lg-7 ml-auto mr-auto mt-3" id="main-img">
+                <img src="https://www.thesuhp.org/content/images/size/w2000/2020/12/USC-Village-aerial.jpg" alt="USC Campus" class="img-fluid">
+                <h4 class="text-center mt-3">USC Campus</h4>
+            </div>
+            <!-- .col -->
 
-			<div class="col-12 mt-3">
-				<button id="delete-all" class="btn btn-outline-danger mb-3">Delete All</button>
-			</div> <!-- .col -->
+            <div class="col-12 mt-3">
+                <button id="delete-all" class="btn btn-outline-danger mb-3">Delete All</button>
+            </div>
+            <!-- .col -->
 
-			<div class="col-12 mb-5">
+            <div class="col-12 mb-5">
 
-				<div id="thumbnails" class="row">
+                <div id="thumbnails" class="row">
 
-					<div class="col-4 col-md-3 col-lg-2 mt-2 mt-md-3 thumbnail">
-						<img src="img/leavey.jpg" alt="Leavey Fountain" class="img-fluid">
-					</div> <!-- .col -->
+                    <div class="col-4 col-md-3 col-lg-2 mt-2 mt-md-3 thumbnail">
+                        <img src="img/leavey.jpg" alt="Leavey Fountain" class="img-fluid">
+                    </div>
+                    <!-- .col -->
 
-					<div class="col-4 col-md-3 col-lg-2 mt-2 mt-md-3 thumbnail">
-						<img src="img/football.jpg" alt="USC Football" class="img-fluid">
-					</div> <!-- .col -->
+                    <div class="col-4 col-md-3 col-lg-2 mt-2 mt-md-3 thumbnail">
+                        <img src="img/football.jpg" alt="USC Football" class="img-fluid">
+                    </div>
+                    <!-- .col -->
 
-					<div class="col-4 col-md-3 col-lg-2 mt-2 mt-md-3 thumbnail">
-						<img src="img/usc_village.jpg" alt="USC Village" class="img-fluid">
-					</div> <!-- .col -->
+                    <div class="col-4 col-md-3 col-lg-2 mt-2 mt-md-3 thumbnail">
+                        <img src="img/usc_village.jpg" alt="USC Village" class="img-fluid">
+                    </div>
+                    <!-- .col -->
 
-				</div> <!-- #thumbnails -->
+                </div>
+                <!-- #thumbnails -->
 
-			</div> <!-- .col -->
+            </div>
+            <!-- .col -->
 
-		</div> <!-- .row -->
-	</div> <!-- .container -->
+        </div>
+        <!-- .row -->
+    </div>
+    <!-- .container -->
+    <script>
+        // WORKFLOW
+        // When user provides an img source and imapge title in input fields
+        // add image to page and add innerHTML field
+        // The new image should be added only if both fields are provided.
+        // 		When the form is successfully submitted, add the new image to list of thumbnails,
+        // Set Image Source… as the src attribute,
+        // Set Image Title (alt attribute)... as the alt attribute,
+        // Add all necessary classes to new HTML elements,
+        // Clear both input fields.
+        // 		When users click on the Delete All button, remove all thumbnails on the page.
+        // When users click on a thumbnail:
+        // Update main image to clicked thumbnail image.
+        // Update main image alt attribute to clicked thumbnail’s alt attribute.
+        // Update caption below main image to clicked thumbnail’s alt attribute.
+        // Ensure this works with all thumbnails, including newly added ones.
+        document.querySelector('#img-form').onsubmit = function() {
+            var title = document.querySelector('#img-alt').value.trim();
+            var source = document.querySelector('#img-src').value.trim();
+            // check to make sure src and alt are not empty
+            if (title.length > 0 && source.length > 0) {
+                var div = document.createElement('col-4 col-md-3 col-lg-2 mt-2 mt-md-3 thumbnail');
+                var newAlt = document.querySelector('alt');
 
+                div.img = source;
+
+                imgZ = newAlt.appendChild(div);
+
+                imgZ.appendChild('.thumbnails');
+
+
+                // Call image converrt function
+                imageConvert();
+            }
+
+            return false;
+        }
+
+        // clear all #thubnails
+        document.querySelector('#delete-all').onclick = function() {
+            document.querySelector('#thumbnails').innerHTML = '';
+        }
+
+
+
+
+        function imageConvert() {
+            // variable to hold all images in .img-fluid
+            var images = document.querySelectorAll('.img-fluid');
+
+
+            for (var i = 0; i < images.length; i++) {
+                images[i].onclick = function() {
+                    // estabnlish clicked src & alt
+                    mainSource = this.src;
+                    mainAlt = this.alt;
+                    // a). Update main image to the clicked thumbnail image.
+                    document.querySelector('#main-img img').src = mainSource;
+                    //  b). Update main image alternative text to thumbnail’s alternative (alt) text.
+                    document.querySelector('#main-img img').alt = mainAlt;
+                    // c.) Update the caption for the main image to the thumbnail’s alternative (alt) text.
+                    document.querySelector('h4').innerHTML = mainAlt;
+                }
+            }
+        }
+        // CALL FUNCTION
+        imageConvert();
+    </script>
 </body>
+
 </html>
