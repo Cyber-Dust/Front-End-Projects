@@ -114,11 +114,13 @@
                 var div = document.createElement('div');
                 // create an image node
                 var newImg = document.createElement('img');
-
+                // add new div
                 div.classList.add('col-4', 'col-md-3', 'col-lg-2', 'mt-2', 'mt-md-3', 'thumbnail');
                 newImg.src = source;
                 newImg.alt = title;
+                // add new img
                 newImg.classList.add('img-fluid');
+                // append 
                 div.appendChild(newImg);
                 // append image and div to #thumbnails
                 document.querySelector('#thumbnails').appendChild(div);
