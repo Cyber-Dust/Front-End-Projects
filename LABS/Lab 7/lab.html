@@ -103,52 +103,56 @@
         // Update main image alt attribute to clicked thumbnail’s alt attribute.
         // Update caption below main image to clicked thumbnail’s alt attribute.
         // Ensure this works with all thumbnails, including newly added ones.
+
+
         document.querySelector('#img-form').onsubmit = function() {
             var title = document.querySelector('#img-alt').value.trim();
             var source = document.querySelector('#img-src').value.trim();
             // check to make sure src and alt are not empty
             if (title.length > 0 && source.length > 0) {
-                var div = document.createElement('col-4 col-md-3 col-lg-2 mt-2 mt-md-3 thumbnail');
-                var newAlt = document.querySelector('alt');
+                // create a div node
+                var div = document.createElement('div');
+                // create an image node
+                var newImg = document.createElement('img');
 
-                div.img = source;
+                div.classList.add('col-4', 'col-md-3', 'col-lg-2', 'mt-2', 'mt-md-3', 'thumbnail');
+                newImg.src = source;
+                newImg.alt = title;
+                newImg.classList.add('img-fluid');
+                div.appendChild(newImg);
+                // append image and div to #thumbnails
+                document.querySelector('#thumbnails').appendChild(div);
 
-                imgZ = newAlt.appendChild(div);
-
-                imgZ.appendChild('.thumbnails');
-
+                // clear input fields
+                document.querySelector('#img-src').value = '';
+                document.querySelector('#img-alt').value = '';
 
                 // Call image converrt function
-                imageConvert();
+                imageConvert()
             }
 
             return false;
+
         }
 
-        // clear all #thubnails
+        // clear all #thumbnails
         document.querySelector('#delete-all').onclick = function() {
             document.querySelector('#thumbnails').innerHTML = '';
         }
 
-
-
-
         function imageConvert() {
             // variable to hold all images in .img-fluid
-            var images = document.querySelectorAll('.img-fluid');
+            var values = document.querySelectorAll('.img-fluid');
 
 
-            for (var i = 0; i < images.length; i++) {
-                images[i].onclick = function() {
-                    // estabnlish clicked src & alt
-                    mainSource = this.src;
-                    mainAlt = this.alt;
+            for (var i = 0; i < values.length; i++) {
+                values[i].onclick = function() {
                     // a). Update main image to the clicked thumbnail image.
-                    document.querySelector('#main-img img').src = mainSource;
+                    document.querySelector('#main-img img').src = this.src;
                     //  b). Update main image alternative text to thumbnail’s alternative (alt) text.
-                    document.querySelector('#main-img img').alt = mainAlt;
+                    document.querySelector('#main-img img').alt = this.alt;
                     // c.) Update the caption for the main image to the thumbnail’s alternative (alt) text.
-                    document.querySelector('h4').innerHTML = mainAlt;
+                    document.querySelector('h4').innerHTML = this.alt;
                 }
             }
         }
