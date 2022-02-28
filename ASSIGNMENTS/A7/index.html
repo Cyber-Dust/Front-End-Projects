@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DOM Manipulation</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div id="main">
+
+        <h1>Inventory Manager</h1>
+
+        <div id="form">
+
+            <label for="item">Item:<span id="extra"> *</span></label>
+
+            <input type="text" id="item" placeholder="Item Name..."><br>
+
+            <label for="item">Price ($):<span id="extra"> *</span></label>
+
+            <input type="number" id="price" placeholder="109.00"><br>
+
+            <label for="url">Image URL: </label>
+
+            <input type="url" id="url" placeholder="https://..."><br>
+
+            <small id="req">*Required</small><br>
+
+            <input type="button" value="Add"><input type="reset">
+
+        </div>
+
+        <div id="inventory">
+
+            <h2>Inventory List</h2>
+
+            <input type="button" value="Delete All">
+
+        </div>
+
+        <div id="list">
+
+            <hr>
+
+            <ul>
+
+                <li>Image</li>
+
+                <li>Item</li>
+
+                <li>Price</li>
+
+            </ul>
+
+            <hr>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
