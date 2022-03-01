@@ -2,6 +2,9 @@ body {
     margin-right: auto;
     margin-left: auto;
     width: 800px;
+    font-family: 'Syncopate', sans-serif;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(78, 78, 247, 1) 35%, rgba(0, 212, 255, 1) 100%);
 }
 
 #list ul {
@@ -16,6 +19,27 @@ body {
 
 .row {
     margin-bottom: 10px;
+}
+
+#movie-form {
+    background-color: azure;
+    border-radius: 20px;
+    padding: 20px;
+    width: 400px;
+    margin: auto;
+    box-shadow: 2px 2px 4px #000000;
+}
+
+h1 {
+    font-size: 4em;
+    text-shadow: 2px 2px 4px #000000;
+    background: -webkit-linear-gradient(#eee, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#header {
+    margin-left: 200px;
 }
 
 #item,
@@ -47,8 +71,12 @@ label {
     color: red;
 }
 
-#extra {
+span {
     color: red;
+}
+
+button {
+    font-family: 'Syncopate', sans-serif;
 }
 
 #button {
@@ -58,15 +86,56 @@ label {
     margin-top: 25px;
     margin-right: auto;
     margin-left: auto;
+    font-family: 'Syncopate', sans-serif;
 }
 
 #delete {
+    margin-top: 20px;
     margin-bottom: 20px;
+    margin-left: 45px;
+    margin-right: 40px;
+}
+
+#reset,
+#delete {
+    font-family: 'Syncopate', sans-serif;
+}
+
+#reset:hover,
+#delete:hover {
+    cursor: pointer;
 }
 
 
 /* Data */
 
-#inventory-list {
-    width: 800px;
+#data ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+    padding: 0px;
+}
+
+.imaged img {
+    width: 220px;
+    height: 326px;
+}
+
+.movie-remove:hover {
+    cursor: pointer;
+    background-color: red;
+    color: aliceblue;
+}
+
+#submit {
+    margin-right: 10px;
+    background-color: #4CAF50;
+    color: whitesmoke;
+}
+
+#submit:hover {
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
 }

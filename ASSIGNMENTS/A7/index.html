@@ -14,6 +14,10 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate&display=swap');
+    </style>
+
 </head>
 
 <body>
@@ -22,11 +26,11 @@
 
         <h1>Movie Watchlist</h1>
 
-        <form id="form">
+        <form id="movie-form">
 
             <div class="row">
 
-                <label for="item">Film Title:<span id="extra"> *</span></label>
+                <label for="item">Film Title:<span> *</span></label>
 
                 <input type="text" id="item" placeholder="Enter Movie Title..."><br>
 
@@ -37,7 +41,7 @@
 
             <div class="row">
 
-                <label for="item">Year:<span id="extra"> *</span></label>
+                <label for="price">Year:<span> *</span></label>
 
                 <input type="text" id="price" placeholder="2012"><br>
 
@@ -59,7 +63,8 @@
 
             <div id="button">
 
-                <button type="submit" id="submit" role="button">Add</button><input type="reset">
+
+                <button type="submit" id="submit">Add</button><input type="reset" id="reset">
 
             </div>
 
@@ -67,9 +72,10 @@
 
         <div id="inventory">
 
-            <h2>Inventory List</h2>
+            <!-- <h2>Watchlist</h2> -->
 
             <input type="button" id="delete" value="Clear Watchlist">
+
 
         </div>
 
@@ -79,18 +85,34 @@
 
             <ul>
 
-                <li>Cover</li>
-
-                <li>Film</li>
-
-                <li>Year</li>
+                <li>Your List</li>
 
             </ul>
 
             <hr>
 
         </div>
-        <div id="inventory-list">
+
+        <div id="data">
+
+
+            <ul id="default-data">
+
+                <li>
+                    <img id="mainpic" src="https://upload.wikimedia.org/wikipedia/en/1/18/Titanic_%281997_film%29_poster.png " alt="titainc ">
+                </li>
+
+                <li>Titanic</li>
+
+                <li>1997</li>
+
+                <li>
+
+                    <button class="movie-remove">Remove</button>
+
+                </li>
+
+            </ul>
 
         </div>
 
@@ -99,10 +121,17 @@
     <script>
         // clear all items
         document.querySelector('#delete').onclick = function() {
-            document.querySelector('#inventory-list').innerHTML = '';
+            document.querySelector('#data').innerHTML = '';
         }
 
-        document.querySelector('#form').onsubmit = function() {
+        // Remove default film
+        document.querySelector('#default-data').onclick = function() {
+            this.remove();
+        }
+
+
+
+        document.querySelector('#movie-form').onsubmit = function() {
             var item = document.querySelector('#item').value.trim();
             var year = document.querySelector('#price').value.trim();
             var cover = document.querySelector('#url').value.trim();
@@ -117,36 +146,89 @@
             }
 
             if (/^$/.test(year)) {
-                document.querySelector('#price-alert').innerHTML = 'Year cannot be empty.';
-                document.querySelector('#price-alert').style.color = '#E00';
+                document.querySelector('#year-alert').innerHTML = 'Year cannot be empty.';
+                document.querySelector('#year-alert').style.color = '#E00';
             } else {
-                document.querySelector('#price-alert').innerHTML = '';
+                document.querySelector('#year-alert').innerHTML = '';
                 count += 1;
             }
 
 
 
-            // check for duplicates
 
-            // for (var i = 0; i < )
+
 
             // if count == 2, create the lsit below
             if (count == 2) {
-                var div = document.createElement('div');
-                var cover = document.createElement('img');
-                var title = document.createElement('h4');
-                var year = document.createElement('h4');
+                // check for duplicate films
+                var listItems = document.querySelectorAll('#data ul li');
 
-                title.innerHTML = item;
-                year.innerHTML = year;
+                for (var i = 0; i < listItems.length; i++) {
+                    if (item == listItems[i].innerHTML) {
+                        // alert user
+                        alert(item + ' is already on the list.');
+                        // return false
+                        return false;
+                    }
+                }
+                // console.log('hello');
+                var ul = document.createElement('ul');
+                var coverLi = document.createElement('li');
+                var img = document.createElement('img');
+                var titleLi = document.createElement('li');
+                var yearLi = document.createElement('li');
+                var rmv = document.createElement('button');
 
-                div.appendChild(cover);
-                div.appendChild(title);
-                div.appendChild(year);
 
-                document.querySelector('#inventory-list').appendChild(div);
+
+
+                if (cover.length == 0) {
+                    img.src = 'https://via.placeholder.com/220x336';
+                    img.alt = 'default';
+                } else {
+
+                    img.src = cover;
+                    img.alt = item;
+                }
+
+                rmv.innerHTML = 'Remove';
+                titleLi.innerHTML = item;
+                yearLi.innerHTML = year;
+
+                // add calss to size the img
+                coverLi.classList.add('imaged');
+                rmv.classList.add('movie-remove');
+
+                // append all to the ul
+                ul.appendChild(coverLi);
+                coverLi.appendChild(img);
+                ul.appendChild(titleLi);
+                ul.appendChild(yearLi);
+                ul.appendChild(rmv);
+
+                // append to webpage - traverse DOM
+                document.querySelector('#data').appendChild(ul);
+
+                bindRemoveBtns();
+
+                // clear forms
+                // item.value = '';
+                // year.value = '';
+                // cover.value = '';
             }
             return false;
+
+            function bindRemoveBtns() {
+                var buttons = document.querySelectorAll('.movie-remove');
+
+                for (var i = 0; i < buttons.length; i++) {
+                    buttons[i].onclick = function() {
+                        this.parentNode.remove();
+                    }
+                }
+            }
+
+            bindRemoveBtns();
 
         }
     </script>
