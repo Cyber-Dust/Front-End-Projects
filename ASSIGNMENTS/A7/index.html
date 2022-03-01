@@ -20,33 +20,56 @@
 
     <div id="main">
 
-        <h1>Inventory Manager</h1>
+        <h1>Movie Watchlist</h1>
 
-        <div id="form">
+        <form id="form">
 
-            <label for="item">Item:<span id="extra"> *</span></label>
+            <div class="row">
 
-            <input type="text" id="item" placeholder="Item Name..."><br>
+                <label for="item">Film Title:<span id="extra"> *</span></label>
 
-            <label for="item">Price ($):<span id="extra"> *</span></label>
+                <input type="text" id="item" placeholder="Enter Movie Title..."><br>
 
-            <input type="number" id="price" placeholder="109.00"><br>
+                <small id="title-alert"></small>
 
-            <label for="url">Image URL: </label>
+            </div>
 
-            <input type="url" id="url" placeholder="https://..."><br>
 
-            <small id="req">*Required</small><br>
+            <div class="row">
 
-            <input type="button" value="Add"><input type="reset">
+                <label for="item">Year:<span id="extra"> *</span></label>
 
-        </div>
+                <input type="text" id="price" placeholder="2012"><br>
+
+                <small id="year-alert"></small>
+
+            </div>
+
+            <div class="row">
+
+                <label for="url">Cover URL: </label>
+
+                <input type="url" id="url" placeholder="https://..."><br>
+
+                <small id="req">*Optional</small><br>
+
+                <small id="cover-alert"></small>
+
+            </div>
+
+            <div id="button">
+
+                <button type="submit" id="submit" role="button">Add</button><input type="reset">
+
+            </div>
+
+        </form>
 
         <div id="inventory">
 
             <h2>Inventory List</h2>
 
-            <input type="button" value="Delete All">
+            <input type="button" id="delete" value="Clear Watchlist">
 
         </div>
 
@@ -56,19 +79,77 @@
 
             <ul>
 
-                <li>Image</li>
+                <li>Cover</li>
 
-                <li>Item</li>
+                <li>Film</li>
 
-                <li>Price</li>
+                <li>Year</li>
 
             </ul>
 
             <hr>
 
         </div>
+        <div id="inventory-list">
+
+        </div>
 
     </div>
+
+    <script>
+        // clear all items
+        document.querySelector('#delete').onclick = function() {
+            document.querySelector('#inventory-list').innerHTML = '';
+        }
+
+        document.querySelector('#form').onsubmit = function() {
+            var item = document.querySelector('#item').value.trim();
+            var year = document.querySelector('#price').value.trim();
+            var cover = document.querySelector('#url').value.trim();
+            count = 0;
+
+            if (/^$/.test(item)) {
+                document.querySelector('#title-alert').innerHTML = 'Title cannot be empty.';
+                document.querySelector('#title-alert').style.color = '#E00';
+            } else {
+                document.querySelector('#title-alert').innerHTML = '';
+                count += 1;
+            }
+
+            if (/^$/.test(year)) {
+                document.querySelector('#price-alert').innerHTML = 'Year cannot be empty.';
+                document.querySelector('#price-alert').style.color = '#E00';
+            } else {
+                document.querySelector('#price-alert').innerHTML = '';
+                count += 1;
+            }
+
+
+
+            // check for duplicates
+
+            // for (var i = 0; i < )
+
+            // if count == 2, create the lsit below
+            if (count == 2) {
+                var div = document.createElement('div');
+                var cover = document.createElement('img');
+                var title = document.createElement('h4');
+                var year = document.createElement('h4');
+
+                title.innerHTML = item;
+                year.innerHTML = year;
+
+                div.appendChild(cover);
+                div.appendChild(title);
+                div.appendChild(year);
+
+                document.querySelector('#inventory-list').appendChild(div);
+            }
+            return false;
+
+        }
+    </script>
 
 </body>
 

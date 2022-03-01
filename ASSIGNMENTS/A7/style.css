@@ -14,20 +14,59 @@ body {
     text-align: center;
 }
 
+.row {
+    margin-bottom: 10px;
+}
+
 #item,
-#price,
-#url {
+#price {
     /* display: flex;
     align-content: center;
     flex-direction: column; */
     /* width: 300px; */
     margin: auto;
-    margin-bottom: 10px;
     padding: 5px;
+}
+
+#url {
+    margin: auto;
+    padding: 5px;
+    margin-bottom: 0px;
 }
 
 label {
     display: inline-block;
     width: 140px;
     text-align: right;
+}
+
+#req {
+    margin-top: 0px;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    color: red;
+}
+
+#extra {
+    color: red;
+}
+
+#button {
+    display: flex;
+    justify-content: space-evenly;
+    width: 120px;
+    margin-top: 25px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#delete {
+    margin-bottom: 20px;
+}
+
+
+/* Data */
+
+#inventory-list {
+    width: 800px;
 }
