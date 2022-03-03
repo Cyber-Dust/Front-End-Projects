@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Subscriptions | JS Objects</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body class="py-4">
+
+	<div class="container">
+		<div class="row">
+			<h1 class="col-12">Subscriptions</h1>
+		</div> <!-- .row -->
+
+		<div class="row mt-3">
+			<h2 class="col-12">Subscribe</h2>
+			<div class="col-12 mt-3">
+
+				<form id="subscribe-form">
+					<div class="form-group row">
+						<label for="first-name" class="col-sm-3 col-lg-2 col-form-label">First Name: <span class="text-danger">*</span></label>
+						<div class="col-sm-9 col-lg-10">
+							<input type="text" class="form-control" id="first-name">
+							<small id="first-name-error" class="text-danger"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="last-name" class="col-sm-3 col-lg-2 col-form-label">Last Name: <span class="text-danger">*</span></label>
+						<div class="col-sm-9 col-lg-10">
+							<input type="text" class="form-control" id="last-name">
+							<small id="last-name-error" class="text-danger"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="email" class="col-sm-3 col-lg-2 col-form-label">Email: </label>
+						<div class="col-sm-9 col-lg-10">
+							<input type="email" class="form-control" id="email">
+							<small id="email-error" class="text-danger"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-sm-3 col-lg-2"></div>
+						<div class="col-sm-9 col-lg-10">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+
+		<div class="row">
+
+			<h2 class="col-12 mt-4">Subscribers</h2>
+
+			<div class="col-12 mt-3">
+
+				<table id="subscribers-list" class="table table-hover">
+					<thead>
+						<tr>
+							<th>Name</th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<tr>
+							<td>Tommy Trojan (ttrojan@usc.edu)</td>
+						</tr>
+
+					</tbody>
+
+				</table>
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+	<script>
+
+		document.querySelector('#subscribe-form').onsubmit = function(){
+			var fname = document.querySelector('#first-name').value.trim();
+			var lname = document.querySelector('#last-name').value.trim();
+			var email = document.querySelector('#email').value.trim();
+
+			if ( fname.length == 0 ) {
+				document.querySelector('#first-name-error').innerHTML = "This field is required.";
+			} else {
+				document.querySelector('#first-name-error').innerHTML = "";
+			}
+
+			if ( lname.length == 0 ) {
+				document.querySelector('#last-name-error').innerHTML = "This field is required.";
+			} else {
+				document.querySelector('#last-name-error').innerHTML = "";
+			}
+
+			if ( fname.length > 0 && lname.length > 0) {
+				// TODO: Add code here.
+
+			}
+
+			return false;
+		}
+
+	</script>
+
+</body>
+</html>
