@@ -85,6 +85,36 @@
     <!-- .container -->
 
     <script>
+        class Person {
+            firstName;
+            lastName;
+            email;
+
+
+            constructor(fName, lName) {
+                this.firstName = fName;
+                this.lastName = lName;
+
+            }
+
+            setEmail(nEmail) {
+                this.email = nEmail;
+            }
+
+            getNameEmail() {
+
+                if (this.email !== undefined) {
+                    return this.firstName + ' ' + this.lastName + ' (' + this.email + ')';
+                } else {
+                    return this.firstName + ' ' + this.lastName;
+                }
+
+            }
+        }
+
+        // create global variable
+        var subscribers = [];
+
         document.querySelector('#subscribe-form').onsubmit = function() {
             var fname = document.querySelector('#first-name').value.trim();
             var lname = document.querySelector('#last-name').value.trim();
@@ -104,20 +134,29 @@
 
             if (fname.length > 0 && lname.length > 0) {
                 // TODO: Add code here.
-                var subscribers;
+                var person = new Person(fname, lname);
 
-                class Person {
-                    fname;
-                    lname;
-                    email;
-                    contact = {
-
-                    }
-
-                    getNameEmail() {
-
-                    }
+                if (email.length > 0) {
+                    person.setEmail(email);
                 }
+
+                // push adds to array
+                subscribers.push(person);
+
+                // Create td and add to tbody
+                var tr = document.createElement('tr');
+                var tdName = document.createElement('td');
+
+                tdName.innerHTML = person.getNameEmail();
+
+                tr.appendChild(tdName);
+
+                document.querySelector('tbody').appendChild(tr);
+
+                // Clear all form fields. use .value
+                document.querySelector('#first-name').value = "";
+                document.querySelector('#last-name').value = "";
+                document.querySelector('#email').value = "";
 
             }
 
