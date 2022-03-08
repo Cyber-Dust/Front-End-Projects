@@ -10,11 +10,17 @@
 </head>
 
 <body>
-
+    <h1 id="first">
+        OK OK
+    </h1>
 </body>
 <script>
     // INJECT REACT
-    import REACT from 'react';
+    // import REACT from 'react';
+
+    document.querySelector('#first').onclick = function() {
+        document.querySelector('#first').style.color = '#E00';
+    }
 </script>
 
 </html>
