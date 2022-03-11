@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>Ignore Me</button>
+    <button class="example-btn">Click Here</button>
+    <button>Ignore Me Too</button>
+
+    <a id="usc-link" href="https://usc.edu">USC Website</a>
+
+    <div id="keyboard-div">Resize Me</div>
+</body>
+<script>
+    document.querySelector('#keyboard-div').onkeydown = function(e) {
+        this.style.height += 10;
+    }
+
+    document.querySelector('#keyboard-div').onkeydown = function(d) {
+        this.style.height -= 10;
+    }
+
+    var username = document.querySelector('#input').value.trim();
+
+    if (/^$/.test(username) || /admin/.test(username)) {
+        console.log('Invalid username.');
+    }
+
+    var rating = 0;
+
+    if (rating == 1) {
+        console.log('Needs Improvement');
+    } else if (rating == 2) {
+        console.log('Good');
+    } else if (rating == 3) {
+        console.log('Outstanding');
+    } else {
+        console.log('Invalid Rating');
+    }
+
+    function arraySum(myArray) {
+        var sum = 0;
+        for (var i = 0; i < myArray.length; i++)
+            sum += myArray[i];
+        return sum;
+    }
+
+    arraySum();
+
+
+    document.querySelector('#usc-link').onclick = function() {
+
+    }
+
+    document.querySelector('.example-btn').onclick = function() {
+            console.log(this.style.background);
+        }
+        // var dl = document.createElement('dl');
+        // var dt = document.createElement('dt');
+        // var dd = document.createElement('dd');
+        // var img = document.createElement('img');
+        // var div = document.createElement('div');
+
+
+    // dt.innerHTML = 'Lorem Ipsum';
+    // img.src = 'ttrojan.jpg';
+    // img.alt = 'Tommy Trojan';
+
+    // div.classList.add('definition mt-2');
+    // div.innerHTML = 'Dolor Sit';
+
+    // dl.appendChild(dt);
+    // dl.appendChild(dd);
+    // dd.appendChild(img);
+    // dd.appendChild(div);
+
+    // document.querySelector('body').appendChild(dl);
+</script>
+
+</html>
