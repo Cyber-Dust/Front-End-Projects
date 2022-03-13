@@ -143,11 +143,11 @@
 
                 document.querySelector('#website-error').innerHTML = 'Website cannot be empty.';
                 document.querySelector('#website-error').style.color = '#E00';
-            } else if (regExHttp.test(website) == false) {
-
-                document.querySelector('#website-error').innerHTML = 'Website cannot be empty.';
-                document.querySelector('#website-error').style.color = '#E00';
             } else if (regExUrl.test(website) == false) {
+
+                document.querySelector('#website-error').innerHTML = 'Must start with http:// or https://..';
+                document.querySelector('#website-error').style.color = '#E00';
+            } else if (regExHttp.test(website) == false) {
 
                 document.querySelector('#website-error').innerHTML = 'Invalid URL.';
                 document.querySelector('#website-error').style.color = '#E00';
@@ -163,7 +163,7 @@
 
                 document.querySelector('#phone-error').innerHTML = 'Phone cannot be empty.';
                 document.querySelector('#phone-error').style.color = '#E00';
-            } else if (/(^\d{10}$|^\(\d{3}\)\s\d{3}\-\d{4}$|^\d{3}\-\d{3}\-\d{4}$)/.test(phone)) {
+            } else if (/(^\d{10}$|^\(\d{3}\)\s\d{3}\-\d{4}$|^\d{3}\-\d{3}\-\d{4}$|^\d{3}d{3}d{4}$)/.test(phone)) {
 
                 document.querySelector('#phone-error').innerHTML = 'Invalid phone format.';
                 document.querySelector('#phone-error').style.color = '#E00';
