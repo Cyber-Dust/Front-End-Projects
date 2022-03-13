@@ -18,12 +18,43 @@
     <div id="keyboard-div">Resize Me</div>
 </body>
 <script>
-    document.querySelector('#keyboard-div').onkeydown = function(e) {
-        this.style.height += 10;
+    class Item {
+        name;
+        quantity;
+        price;
+
+        constructor(nName, nQuantity, nPrice) {
+            this.name = nName;
+            this.quantity = nQuantity;
+            this.price = nPrice;
+        }
+        getSubtotal() {
+            return this.price + this.quantity;
+        }
     }
 
-    document.querySelector('#keyboard-div').onkeydown = function(d) {
-        this.style.height -= 10;
+    var color1 = new Item('Blue', 1, 2);
+    var color2 = new Item('Red', 3, 4);
+
+    var myCart = [];
+
+    myCart.push(color1);
+    myCart.push(color2);
+
+
+    document.querySelector('#container').style.height = 200;
+
+
+    document.querySelector('#keyboard-div').onkeypress = function(e) {
+        var move = getComputedStyle(this).getPropertyValue('move');
+        move = parseInt(move);
+        if (e.key == 'e') {
+            this.style.move = move + 10 + 'px';
+        }
+    }
+
+    document.querySelector('#keyboard-div').onkeypress = function(d) {
+        d.style.height -= 10;
     }
 
     var username = document.querySelector('#input').value.trim();
