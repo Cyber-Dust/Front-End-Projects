@@ -21,6 +21,12 @@
 
     document.querySelector('#first').onclick = function() {
         document.querySelector('#first').style.color = '#E00';
+        var p1 = document.createElement('p');
+
+        p1.innerHTML = 'AC/DC is the best rock band!';
+
+        document.querySelector('body').appendChild(p1);
+
     }
 
     document.querySelector('#first').onmouseenter = function() {
