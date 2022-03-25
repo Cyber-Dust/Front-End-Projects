@@ -18,6 +18,21 @@
 <script>
     // INJECT REACT
     // import REACT from 'react';
+    class bottle {
+        name;
+        quantity;
+        price;
+
+        constructor(nName, nQuantity, nPrice) {
+            this.name = nName;
+            this.quantity = nQuantity;
+            this.price = nPrice;
+        }
+        getSubtotal() {
+            return this.price + this.quantity;
+        }
+
+    }
 
     document.querySelector('#first').onclick = function() {
         document.querySelector('#first').style.color = '#E00';
