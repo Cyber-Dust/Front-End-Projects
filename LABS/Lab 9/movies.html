@@ -1,127 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>The Movie DB API</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-	<style>
-		#movie-container img {
-			max-width: 100%;
-			height: auto;
-			margin-bottom: 10px;
-		}
-		h5 + div {
-			font-style: italic;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Movie DB API</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <style>
+        #movie-container img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        h5+div {
+            font-style: italic;
+        }
+    </style>
 </head>
+
 <body>
-	<div class="container">
-		<div class="row">
-			<h1 class="col-12 mt-4">Movie Search</h1>
-		</div> <!-- .row -->
+    <div class="container">
+        <div class="row">
+            <h1 class="col-12 mt-4">Movie Search</h1>
+        </div>
+        <!-- .row -->
 
-		<div class="row">
-			<form class="col-12" id="search-form">
-				<div class="form-row">
-					<div class="col-12 mt-4 col-sm-6 col-md-4 col-lg-3">
-						<label for="search-term" class="sr-only">Search:</label>
+        <div class="row">
+            <form class="col-12" id="search-form">
+                <div class="form-row">
+                    <div class="col-12 mt-4 col-sm-6 col-md-4 col-lg-3">
+                        <label for="search-term" class="sr-only">Search:</label>
 
-						<input type="text" id="search-term" class="form-control" placeholder="Search...">
+                        <input type="text" id="search-term" class="form-control" placeholder="Search...">
 
-					</div>
-					<div class="col-12 mt-4 col-sm-auto">
-						<button type="submit" class="btn btn-primary btn-block">Search</button>
-					</div>
-				</div> <!-- .form-row -->
-			</form>
-		</div> <!-- .row -->
+                    </div>
+                    <div class="col-12 mt-4 col-sm-auto">
+                        <button type="submit" class="btn btn-primary btn-block">Search</button>
+                    </div>
+                </div>
+                <!-- .form-row -->
+            </form>
+        </div>
+        <!-- .row -->
 
-		<div class="row">
-			<div class="col-12 mt-4 mb-4">
+        <div class="row">
+            <div class="col-12 mt-4 mb-4">
 
-				Showing <span id="num-results" class="font-weight-bold">0</span> of <span id="num-total" class="font-weight-bold">0</span> result(s).
-				
-			</div>
-		</div> <!-- .row -->
-		
-		<div id="movie-container" class="row">
+                Showing <span id="num-results" class="font-weight-bold">0</span> of <span id="num-total" class="font-weight-bold">0</span> result(s).
 
-			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
-				<img alt="Dune Poster" src="http://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg">
-				<h5>Dune</h5>
-				<div>2021-09-15</div>
-			</div>
+            </div>
+        </div>
+        <!-- .row -->
 
-			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
-				<img alt="Venom: Let There Be Carnage Poster" src="http://image.tmdb.org/t/p/w500/rjkmN1dniUHVYAtwuV3Tji7FsDO.jpg">
-				<h5>Venom: Let There Be Carnage</h5>
-				<div>2021-09-30</div>
-			</div>
+        <div id="movie-container" class="row">
 
-			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
-				<img alt="Army of Thieves Poster" src="http://image.tmdb.org/t/p/w500/iPTZGFmPs7HsXHYxiuxGolihjOH.jpg">
-				<h5>Army of Thieves</h5>
-				<div>2021-10-29</div>
-			</div>
+            <div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+                <img alt="Dune Poster" src="http://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg">
+                <h5>Dune</h5>
+                <div>2021-09-15</div>
+            </div>
 
-			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
-				<img alt="Halloween Kills Poster" src="http://image.tmdb.org/t/p/w500/ir9eyz1mtgsohjvo7UYtqUfFuES.jpg">
-				<h5>Halloween Kills</h5>
-				<div>2021-10-14</div>
-			</div>
+            <div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+                <img alt="Venom: Let There Be Carnage Poster" src="http://image.tmdb.org/t/p/w500/rjkmN1dniUHVYAtwuV3Tji7FsDO.jpg">
+                <h5>Venom: Let There Be Carnage</h5>
+                <div>2021-09-30</div>
+            </div>
 
-			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
-				<img alt="Free Guy Poster" src="http://image.tmdb.org/t/p/w500/xmbU4JTUm8rsdtn7Y3Fcm30GpeT.jpg">
-				<h5>Free Guy</h5>
-				<div>2021-08-11</div>
-			</div>
+            <div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+                <img alt="Army of Thieves Poster" src="http://image.tmdb.org/t/p/w500/iPTZGFmPs7HsXHYxiuxGolihjOH.jpg">
+                <h5>Army of Thieves</h5>
+                <div>2021-10-29</div>
+            </div>
 
-			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
-				<img alt="F9 Poster" src="http://image.tmdb.org/t/p/w500/bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg">
-				<h5>F9</h5>
-				<div>2021-05-19</div>
-			</div>
+            <div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+                <img alt="Halloween Kills Poster" src="http://image.tmdb.org/t/p/w500/ir9eyz1mtgsohjvo7UYtqUfFuES.jpg">
+                <h5>Halloween Kills</h5>
+                <div>2021-10-14</div>
+            </div>
 
-			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
-				<img alt="Hypnotic Poster" src="http://image.tmdb.org/t/p/w500/miEj4kNc4efZ5WbPJqWl1UXWrvS.jpg">
-				<h5>Hypnotic</h5>
-				<div>2021-10-27</div>
-			</div>
+            <div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+                <img alt="Free Guy Poster" src="http://image.tmdb.org/t/p/w500/xmbU4JTUm8rsdtn7Y3Fcm30GpeT.jpg">
+                <h5>Free Guy</h5>
+                <div>2021-08-11</div>
+            </div>
 
-			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
-				<img alt="The Suicide Squad Poster" src="http://image.tmdb.org/t/p/w500/kb4s0ML0iVZlG6wAKbbs9NAm6X.jpg">
-				<h5>The Suicide Squad</h5>
-				<div>2021-07-28</div>
-			</div>
+            <div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+                <img alt="F9 Poster" src="http://image.tmdb.org/t/p/w500/bOFaAXmWWXC3Rbv4u4uM9ZSzRXP.jpg">
+                <h5>F9</h5>
+                <div>2021-05-19</div>
+            </div>
 
-			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
-				<img alt="Old Poster" src="http://image.tmdb.org/t/p/w500/vclShucpUmPhdAOmKgf3B3Z4POD.jpg">
-				<h5>Old</h5>
-				<div>2021-07-21</div>
-			</div>
+            <div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+                <img alt="Hypnotic Poster" src="http://image.tmdb.org/t/p/w500/miEj4kNc4efZ5WbPJqWl1UXWrvS.jpg">
+                <h5>Hypnotic</h5>
+                <div>2021-10-27</div>
+            </div>
 
-			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
-				<img alt="Night Teeth Poster" src="http://image.tmdb.org/t/p/w500/4niEFGAUEz3GUqwk9Y2y4aAERhE.jpg">
-				<h5>Night Teeth</h5>
-				<div>2021-10-20</div>
-			</div>
+            <div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+                <img alt="The Suicide Squad Poster" src="http://image.tmdb.org/t/p/w500/kb4s0ML0iVZlG6wAKbbs9NAm6X.jpg">
+                <h5>The Suicide Squad</h5>
+                <div>2021-07-28</div>
+            </div>
 
-			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
-				<img alt="Eternals Poster" src="http://image.tmdb.org/t/p/w500/6AdXwFTRTAzggD2QUTt5B7JFGKL.jpg">
-				<h5>Eternals</h5>
-				<div>2021-11-03</div>
-			</div>
+            <div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+                <img alt="Old Poster" src="http://image.tmdb.org/t/p/w500/vclShucpUmPhdAOmKgf3B3Z4POD.jpg">
+                <h5>Old</h5>
+                <div>2021-07-21</div>
+            </div>
 
-			<div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
-				<img alt="No Time to Die Poster" src="http://image.tmdb.org/t/p/w500/iUgygt3fscRoKWCV1d0C7FbM9TP.jpg">
-				<h5>No Time to Die</h5>
-				<div>2021-09-29</div>
-			</div>
+            <div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+                <img alt="Night Teeth Poster" src="http://image.tmdb.org/t/p/w500/4niEFGAUEz3GUqwk9Y2y4aAERhE.jpg">
+                <h5>Night Teeth</h5>
+                <div>2021-10-20</div>
+            </div>
 
-		</div> <!-- .row -->
-	</div> <!-- .container -->
+            <div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+                <img alt="Eternals Poster" src="http://image.tmdb.org/t/p/w500/6AdXwFTRTAzggD2QUTt5B7JFGKL.jpg">
+                <h5>Eternals</h5>
+                <div>2021-11-03</div>
+            </div>
 
+            <div class="text-center my-3 col-6 col-sm-4 col-md-3 col-lg-2">
+                <img alt="No Time to Die Poster" src="http://image.tmdb.org/t/p/w500/iUgygt3fscRoKWCV1d0C7FbM9TP.jpg">
+                <h5>No Time to Die</h5>
+                <div>2021-09-29</div>
+            </div>
+
+        </div>
+        <!-- .row -->
+    </div>
+    <!-- .container -->
+    <!-- ADD JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        // WORKFLOW
+        // create event handler[]
+        // save user input into variable[]
+        // if user is NOT empty[]
+        // 		a) create variable to store the URL[]
+        // 		b) Replace API_KEY with your API key and SEARCH_TERM with user input.[]
+        // 		c) invoke ajax function[]
+        // 		d) clear input form field[]
+
+        // Upon receiving a successful AJAX response:
+        // Set content of <span id="num-results"> to number of results returned by the API (length of results array).
+        // Set content of <span id="num-total"> to total number or results the API has.
+        // Clear the list of movies currently displayed in the DOM.
+        // Loop through the results array and for each movie display movie poster, title, and release date in the same format as hard-coded sample data.
+        // 		If an image is missing for that particular result, display a placeholder image of your choice.
+
+        document.querySelector('#search-form').onsubmit = function() {
+            var user = document.querySelector('#search-term').value.trim();
+
+
+            if (user.length > 0) {
+                var TMDBurl = 'https://api.themoviedb.org/3/movie/550?api_key=1c3857a5c17f8bab2fbf29e36008f3a8&query=' + user;
+
+                $.ajax({
+                    url: TMDBurl,
+                    dataType: 'json',
+                    success: function(response) {
+                        // console.log(response);
+                        // console.log(response.results);
+
+                        // Clear old results
+                        document.querySelector('#movie-container').innerHTML = '';
+
+
+                        // document.querySelector('#num-results').innerHTML = response.results.length;
+
+                        for (var i = 0; i < response.results.length; i++) {
+                            console.log(response.results[i]);
+
+                            // call funciton
+                            createFilms(response.results[i]);
+
+                        }
+
+                        document.querySelector('#num-results').innerHTML = response.results_length;
+                        document.querySelector('#num-total').innerHTML = response.total_results;
+
+                    },
+                    error: function(err) {
+                        alert('AJAX Error');
+                        console.log(err);
+                    }
+                });
+
+                document.querySelector('#search-term').value = "";
+            }
+
+
+            return false;
+        }
+
+        function createFilms(film) {
+            // establish DOM elements
+            var container = document.createElement('div');
+            var image = document.createElement('img');
+            var h5 = document.createElement('h5');
+            var date = document.createElement('div');
+            // add class for Bootstrap
+            container.classList.add('text-center', 'my-3', 'col-6', 'col-sm-4', 'col-md-3', 'col-lg-2');
+
+            if (film.poster_path == null) {
+                img.src = 'https://via.placeholder.com/225x337.5';
+            } else {
+                img.src = "http://image.tmdb.org/t/p/w500" + film.poster_path;
+            }
+
+
+            img.alt = film.original_title; // todo: Fill Out Info
+
+            h5.innerHTML = film.original_title;
+            date.innerHTML = film.release_date;
+
+            container.append(img);
+            container.append(h5);
+            container.append(date);
+
+            document.querySelector('#movie-container').appendChild(container);
+        }
+    </script>
 </body>
+
 </html>
