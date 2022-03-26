@@ -19,6 +19,21 @@
 <script>
     // INJECT REACT
     // import REACT from 'react';
+    class bottle {
+        name;
+        quantity;
+        price;
+
+        constructor(nName, nQuantity, nPrice) {
+            this.name = nName;
+            this.quantity = nQuantity;
+            this.price = nPrice;
+        }
+        getSubtotal() {
+            return this.price + this.quantity;
+        }
+
+    }
 
     document.querySelector('#first').onclick = function() {
         document.querySelector('#first').style.color = '#E00';
@@ -37,12 +52,21 @@
     document.querySelector('#first').onmousedown = function() {
         document.querySelector('#first').style.color = '#000';
     }
+<<<<<<< HEAD
 
     function myFunction(a, b) {
         return a * b;
     }
 
     myFunction(11, 3);
+=======
+    
+    document.querySelector('#first').onmouseip = function() {
+        document.querySelector('#first').style.color = '#0B0';
+    }
+    
+    
+>>>>>>> c117b5a44340fbcfc3ae740314e0929227bcf562
 </script>
 
 </html>
