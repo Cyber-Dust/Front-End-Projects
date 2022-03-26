@@ -155,20 +155,24 @@
 
 
             if (user.length > 0) {
-                var TMDBurl = 'https://api.themoviedb.org/3/movie/550?api_key=1c3857a5c17f8bab2fbf29e36008f3a8&query=' + user;
+                // use search/movie
+                var TMDBurl = 'https://api.themoviedb.org/3/search/movie?api_key=3ac4686e06ca6667295b42fd77924f9d&query=' + user;
 
                 $.ajax({
                     url: TMDBurl,
                     dataType: 'json',
                     success: function(response) {
-                        // console.log(response);
-                        // console.log(response.results);
+                        console.log(response);
+                        console.log(response.results);
 
                         // Clear old results
                         document.querySelector('#movie-container').innerHTML = '';
 
 
                         // document.querySelector('#num-results').innerHTML = response.results.length;
+
+                        document.querySelector('#num-results').innerHTML = response.results.length;
+                        document.querySelector('#num-total').innerHTML = response.total_results;
 
                         for (var i = 0; i < response.results.length; i++) {
                             console.log(response.results[i]);
@@ -178,8 +182,6 @@
 
                         }
 
-                        document.querySelector('#num-results').innerHTML = response.results_length;
-                        document.querySelector('#num-total').innerHTML = response.total_results;
 
                     },
                     error: function(err) {
@@ -198,14 +200,14 @@
         function createFilms(film) {
             // establish DOM elements
             var container = document.createElement('div');
-            var image = document.createElement('img');
+            var img = document.createElement('img');
             var h5 = document.createElement('h5');
             var date = document.createElement('div');
             // add class for Bootstrap
             container.classList.add('text-center', 'my-3', 'col-6', 'col-sm-4', 'col-md-3', 'col-lg-2');
 
             if (film.poster_path == null) {
-                img.src = 'https://via.placeholder.com/225x337.5';
+                img.src = 'https://via.placeholder.com/500x666';
             } else {
                 img.src = "http://image.tmdb.org/t/p/w500" + film.poster_path;
             }
