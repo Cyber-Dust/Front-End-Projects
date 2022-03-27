@@ -162,26 +162,21 @@
                     url: TMDBurl,
                     dataType: 'json',
                     success: function(response) {
-                        console.log(response);
-                        console.log(response.results);
+                        // console.log(response);
+                        // console.log(response.results);
 
                         // Clear old results
                         document.querySelector('#movie-container').innerHTML = '';
-
-
                         // document.querySelector('#num-results').innerHTML = response.results.length;
-
                         document.querySelector('#num-results').innerHTML = response.results.length;
                         document.querySelector('#num-total').innerHTML = response.total_results;
+                        document.querySelector('#search-term').value = "";
 
                         for (var i = 0; i < response.results.length; i++) {
-                            console.log(response.results[i]);
-
+                            // console.log(response.results[i]);
                             // call funciton
                             createFilms(response.results[i]);
-
                         }
-
 
                     },
                     error: function(err) {
@@ -190,7 +185,6 @@
                     }
                 });
 
-                document.querySelector('#search-term').value = "";
             }
 
 
