@@ -32,6 +32,7 @@
     <!-- WORKFLOW
 add wireframes -->
     <script>
+        // API ARCHITECTURE
         $.ajax({
             url: '',
             dataTytpe: 'json',
@@ -46,6 +47,12 @@ add wireframes -->
 
         document.querySelector('#test').onclick = function() {
             this.style.color = 'E00';
+            var h1 = document.createElement('h1');
+
+            h1.innerHTML = 'Love you';
+
+
+            document.querySelector('#test').appendChild(h1);
         }
     </script>
 </body>
