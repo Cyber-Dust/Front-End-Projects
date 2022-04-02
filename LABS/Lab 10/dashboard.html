@@ -63,6 +63,90 @@
             <p class="mb-1">&copy; 2019 ITP Web Dev</p>
         </footer>
     </div>
+    <script>
+        // WORKFLOW
+        // This ensure that previous data does not go away when the browser is closed or refreshed
+        // If firstName property is defined in Local Storage, display it in the corresponding form field.
+        if (localStorage.firstName != undefined) {
+            document.querySelector('#firstName').value = localStorage.firstName;
+        } else {
+            document.querySelector('#firstName').value = '';
+        }
+        // If lastName property is defined in Local Storage, display it in the corresponding form field.
+        if (localStorage.lastName != undefined) {
+            document.querySelector('#lastName').value = localStorage.lastName;
+        } else {
+            document.querySelector('#lastName').value = '';
+        }
+        // If socialMedia property is defined in Local Storage, convert it to a JS object using JSON.parse() and save the result
+        // in a local variable.
+        // --THE MAGIC--
+        if (localStorage.socialMedia != undefined) {
+            var parseSocial = JSON.parse(localStorage.socialMedia);
+            var insta = parseSocial.instagram;
+            var twitter = parseSocial.twitter;
+            //      If instagram property is defined in the social media object above, display it in the corresponding form field.
+            if (insta != '') {
+                document.querySelector('#instagram').value = insta;
+            }
+            //      If twitter property is defined in the social media object above, display it in the corresponding form field.
+            if (twitter != '') {
+                document.querySelector('#twitter').value = twitter;
+            }
+        }
+
+        // SUBMIT
+        document.querySelector('#user-form').onsubmit = function() {
+                var fName = document.querySelector('#firstName').value.trim();
+                var lName = document.querySelector('#firstName').value.trim();
+                var gram = document.querySelector('#instagram').value.trim();
+                var twt = document.querySelector('#twitter').value.trim();
+                // If first name was provided, save it into firstName property in Local Storage.
+                if (fName.length > 0) {
+                    localStorage.firstName = fName;
+                }
+                // If last name was provided, save it into lastName property in Local Storage.
+                if (lName.length > 0) {
+                    localStorage.lastName = lName;
+                }
+                // Create an empty object social (or similar) to store social media information.
+                socials = {
+                    instagram: '',
+                    twitter: '',
+                };
+                // If Instagram handle was provided, save it into instagram property in social object created above.
+                if (gram.length > 0) {
+                    // Convert  social object into a string using JSON.stringify(), then save it into socialMedia property in Local Storage.
+                    socials.instagram = gram;
+                }
+                // If Twitter handle was provided, save it into twitter property in social object created above.
+                if (twt.length > 0) {
+                    //          Convert  social object into a string using JSON.stringify(), then save it into socialMedia property in Local Storage.
+                    socials.twitter = twt;
+                }
+
+                localStorage.socialMedia = JSON.stringify(socials);
+                // Display following message inside <p id="msg">:
+                //       User Information Saved.
+                document.querySelector('#msg').innerHTML = 'User information successfully saved.';
+                document.querySelector('#msg').style.color = 'E00';
+                return false;
+            }
+            // CLEAR
+        document.querySelector('#clear-btn').onclick = function() {
+            // Clear Local Storage.
+            localStorage.clear();
+            // Clear all form fields.
+            document.querySelector('#firstName').value = '';
+            document.querySelector('#firstName').value = '';
+            document.querySelector('#instagram').value = '';
+            document.querySelector('#twitter').value = '';
+            // Display following message inside <p id="msg">:
+            //      User Information Cleared.
+            document.querySelector('#msg').innerHTML = 'User information successfully cleared.';
+            document.querySelector('#msg').style.color = 'E00';
+        }
+    </script>
 </body>
 
 </html>
