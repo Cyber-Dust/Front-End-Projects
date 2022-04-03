@@ -6,28 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Proposal</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10"></div>
-            <div class="col-md-1"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-7">
-                <h1 id="test">Main Title</h1>
-                <h2>Sub title</h2>
+    <header>
+        <h1>Dasean Volk: Project Proposal</h1>
+        <div class="container">
+            <div class="row row-cols-2">
+                <div class="col">Vision</div>
+                <div class="col">Wireframe</div>
+                <div class="col">Colorways</div>
+                <div class="col">Prototype</div>
             </div>
-            <div class="col-md-3"></div>
         </div>
-    </div>
+    </header>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- WORKFLOW
 add wireframes -->
@@ -43,17 +38,7 @@ add wireframes -->
                 alert('AJAX error')
             }
 
-        })
-
-        document.querySelector('#test').onclick = function() {
-            this.style.color = 'E00';
-            var h1 = document.createElement('h1');
-
-            h1.innerHTML = 'Love you';
-
-
-            document.querySelector('#test').appendChild(h1);
-        }
+        });
     </script>
 </body>
 
