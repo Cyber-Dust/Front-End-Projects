@@ -16,3 +16,21 @@ body {
 #title {
     font-size: 5em;
 }
+
+.row {
+    margin: 50px;
+}
+
+#sites {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#carousel {
+    display: flex;
+    margin: auto;
+    width: 300px;
+    height: 350px;
+    justify-content: space-evenly;
+    padding: 50px;
+}
