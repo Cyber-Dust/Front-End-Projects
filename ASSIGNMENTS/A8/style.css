@@ -1,3 +1,8 @@
+html {
+    width: 100%;
+    height: auto;
+}
+
 header {
     text-align: center;
 }
@@ -5,4 +10,9 @@ header {
 body {
     background: url(stacked-waves-haikei.svg) no-repeat;
     background-size: cover;
+    font-family: -apple-system, BlinkMacSystemFont;
+}
+
+#title {
+    font-size: 5em;
 }
