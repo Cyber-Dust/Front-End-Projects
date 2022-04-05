@@ -10,7 +10,6 @@ header {
 body {
     background: url(stacked-waves-haikei.svg) no-repeat;
     background-size: cover;
-    font-family: -apple-system, BlinkMacSystemFont;
 }
 
 #title {
@@ -26,6 +25,10 @@ body {
     justify-content: space-evenly;
 }
 
+#sites a {
+    color: beige;
+}
+
 #carousel {
     display: flex;
     margin: auto;
@@ -33,4 +36,16 @@ body {
     height: 350px;
     justify-content: space-evenly;
     padding: 50px;
+}
+
+.col {
+    text-align: left;
+}
+
+h3 {
+    text-align: center;
+}
+
+#frame {
+    text-align: center;
 }
