@@ -32,9 +32,13 @@ body {
 #carousel {
     display: flex;
     margin: auto;
-    width: 300px;
-    height: 350px;
+    width: 600px;
+    height: 650px;
     justify-content: space-evenly;
+    padding: 50px;
+}
+
+#carousel img {
     padding: 50px;
 }
 
