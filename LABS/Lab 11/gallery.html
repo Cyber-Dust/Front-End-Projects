@@ -77,29 +77,32 @@
     <script>
         $(".thumbnail").css('opacity', '0.8');
 
+        // In just 6 lines of code: this is how you get the hover effect over individual images
+        // Webpage boost +1
         $('.thumbnail').mouseenter(function() {
             $(this).css('opacity', '1.0');
         });
-
         $('.thumbnail').mouseleave(function() {
             $(this).css('opacity', '0.8');
         });
 
+        // Best way to match image to maiun image when clicked
         $('img').click(function() {
-            var source = $(this).attr('src')
-            var alternative = $(this).attr('alt')
-                // remove border-danger from thumbnail images
+            var newSrc = $(this).attr('src');
+            var newAlt = $(this).attr('alt');
+            // remove border-danger from thumbnail images
             $('img').removeClass('border-danger');
             // add border-danger to thumbnails
             $(this).addClass('border-danger');
             // set src attr of the main img to the clicked thumbnail
-            $("main-img").attr('src', source)
-                // set alt attr of the main img to the clicked thumbnail
-            $("main-img").attr('src', alternative)
-                // set caption to same value as alt of clicked image
-            $('big').html(alternative)
+            $('#main-img').attr('src', newSrc);
+            // set alt attr of the main img to the clicked thumbnail
+            $('#main-img').attr('alt', newAlt);
+            // set caption to same value as alt of clicked image
+            $('big').html(alternative);
         });
 
+        // Simple ANIMATION
         $('#animation-start').click(function() {
             $('img').animate({
                 borderRadius: "50%"
