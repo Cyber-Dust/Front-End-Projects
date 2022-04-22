@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Analog Stopwatch</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<style>
+		img {
+			top: 0px;
+			bottom: 0px;
+			right: 0px;
+			left: 0px;
+			z-index: -1;
+		}
+	</style>
+</head>
+<body class="py-5">
+
+	<div class="container">
+		<div class="row text-center">
+			<h1 class="col-12">Analog Stopwatch</h1>
+		</div> <!-- .row -->
+
+		<div class="row text-center">
+			<div class="col-12 mt-5">
+				<button class="btn btn-success">Start / Resume</button>
+				<button class="btn btn-warning">Pause</button>
+				<button class="btn btn-danger">Reset</button>
+			</div> <!-- .col -->
+
+			<div class="col-8 col-md-6 mx-auto mt-5 position-relative">
+				<img src="img/clock-face.png" alt="Clock Face" class="img-fluid position-absolute">
+				<img src="img/seconds-hand.png" alt="Seconds Hand" class="img-fluid position-absolute">
+			</div> <!-- .col -->
+		</div> <!-- .row -->
+	</div> <!-- .container -->
+
+</body>
+</html>

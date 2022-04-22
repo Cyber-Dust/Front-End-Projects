@@ -82,7 +82,7 @@ footer {
 }
 
 .table {
-    margin-top: 100px;
+    margin-top: 10px;
 }
 
 #usc {
@@ -107,4 +107,12 @@ footer {
 .d-flex {
     width: 200px;
     margin: auto;
+}
+
+#homepage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    text-align: center;
 }
