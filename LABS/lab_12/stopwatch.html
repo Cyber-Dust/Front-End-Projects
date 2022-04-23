@@ -1,38 +1,93 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Analog Stopwatch</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-	<style>
-		img {
-			top: 0px;
-			bottom: 0px;
-			right: 0px;
-			left: 0px;
-			z-index: -1;
-		}
-	</style>
+    <title>Analog Stopwatch</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <style>
+        img {
+            top: 0px;
+            bottom: 0px;
+            right: 0px;
+            left: 0px;
+            z-index: -1;
+        }
+    </style>
 </head>
+
 <body class="py-5">
 
-	<div class="container">
-		<div class="row text-center">
-			<h1 class="col-12">Analog Stopwatch</h1>
-		</div> <!-- .row -->
+    <div class="container">
+        <div class="row text-center">
+            <h1 class="col-12">Analog Stopwatch</h1>
+        </div>
+        <!-- .row -->
 
-		<div class="row text-center">
-			<div class="col-12 mt-5">
-				<button class="btn btn-success">Start / Resume</button>
-				<button class="btn btn-warning">Pause</button>
-				<button class="btn btn-danger">Reset</button>
-			</div> <!-- .col -->
+        <div class="row text-center">
+            <div class="col-12 mt-5">
+                <button id="animation-start" class="btn btn-success">Start / Resume</button>
+                <button id="animation-pause" class="btn btn-warning">Pause</button>
+                <button id="animation-reset" class="btn btn-danger">Reset</button>
+            </div>
+            <!-- .col -->
 
-			<div class="col-8 col-md-6 mx-auto mt-5 position-relative">
-				<img src="img/clock-face.png" alt="Clock Face" class="img-fluid position-absolute">
-				<img src="img/seconds-hand.png" alt="Seconds Hand" class="img-fluid position-absolute">
-			</div> <!-- .col -->
-		</div> <!-- .row -->
-	</div> <!-- .container -->
+            <div class="col-8 col-md-6 mx-auto mt-5 position-relative">
+                <img id="face" src="img/clock-face.png" alt="Clock Face" class="img-fluid position-absolute">
+                <img id="hand" src="img/seconds-hand.png" alt="Seconds Hand" class="img-fluid position-absolute">
+            </div>
+            <!-- .col -->
+        </div>
+        <!-- .row -->
+    </div>
+    <!-- .container -->
+    <script>
+        // 	When users click on Start / Resume button:
 
+        // Start a timer that will rotate seconds-hand.png image with every iteration.
+        // Ensure at most only one (1) timer is running at any given time.
+        var rotationDeg = 0;
+        // var intervalId;
+        var stopwatchRunning = false;
+
+        function animateLoader() {
+            // The image needs to be rotated by six (6) degrees every one (1) second.
+            rotationDeg += 6;
+
+            document.querySelector('#hand').style.transform = 'rotate(' + rotationDeg + 'deg)';
+
+            // loaderId = requestAnimationFrame(animateLoader);
+
+            if (stopwatchRunning == false) {
+
+                stopwatchRunning = true;
+
+                intervalId = setInterval(function() {
+                    animateLoader();
+                }, 1000);
+            }
+        }
+
+        document.querySelector('#animation-start').onclick = function() {
+            animateLoader();
+        }
+
+        document.querySelector('#animation-pause').onclick = function() {
+            stopStopwatch();
+        }
+
+        document.querySelector('#animation-reset').onclick = function() {
+            stopStopwatch();
+            // set rotation degree back to zero
+            rotationDeg = 0;
+
+            document.querySelector('#hand').style.transform = 'rotate(' + rotationDeg + 'deg)';
+        }
+
+        function stopStopwatch() {
+            clearInterval(intervalId);
+            stopwatchRunning = false;
+        }
+    </script>
 </body>
+
 </html>
