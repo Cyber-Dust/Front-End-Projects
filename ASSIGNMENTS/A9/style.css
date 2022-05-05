@@ -116,3 +116,8 @@ footer {
     margin-top: 200px;
     text-align: center;
 }
+
+#newModal {
+    margin: auto;
+    text-align: center;
+}

@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coinspace</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- <link rel="icon" type="image/x-icon" href="IMG/336-3369358_jpg-library-download-miscellaneous-astronomy-planet-saturn-planet-icon-png.png"> -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -33,11 +35,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="contact.html">About</a>
             </li>
-            <li>Hello,
-                <script>
-                    timeZone()
-                </script>
-            </li>
+            <!-- <li>
+                <a class="nav-link">Hello,
+                    <script>
+                        timeZone()
+                    </script>
+                </a>
+            </li> -->
         </ul>
     </div>
     <div class="container" id="homepage">
@@ -45,43 +49,180 @@
             <div class="container" id="edit">
                 <h1 class="display-4">GO AHEAD, SEARCH FOR WHICH YOU SEEK?</h1>
                 <p class="lead">"Imagination will often carry us to worlds that never were. But without it we go nowhere. -Carl Sagan</p>
-                <span>TYPE IN A CRYPTOCURRENCY:</span>
-                <form class="d-flex">
-
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+            </div>
+            <div class="row">
+                <form id="search-form" class="d-flex">
+                    <input type="text" id="search-term" class="form-control" placeholder="Search...">
+                    <button class="btn btn-outline-success" type="submit" data-toggle="modal" data-target="#newModal">Search</button>
+                    <!-- <datalist id="datalistOptions ">
+                        <option value="Bitcoin ">
+                        <option value="Ethereum ">
+                        <option value="Solana ">
+                        <option value="Dogecoin ">
+                        <option value="XRP ">
+                      </datalist> -->
                 </form>
             </div>
         </div>
     </div>
+    <div class="container">
+
+        <div class="modal fade" id="newModal" tabindex="-1">
+            <!-- <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
 
 
-
-
-
+    </div>
 
 
     <footer>
         <h5>&#169; 2022 Dasean Volk | University of Southern California</h5>
     </footer>
     <!-- Add the scaffolding for the static pages -->
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js "></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js "></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+    <script id="handlebarsTemplate" type="text/x-handlebars-template">
+        {{#with data}}
+        <!-- <div class="modal fade" tabindex="-1"> -->
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{this.name}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>{{this.market_data.price_usd}}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+        <!-- </div> -->
+        {{/with}}
+    </script>
     <script>
-        //     document.querySelector('#one').onclick = function() {
-        //             this.value =
-        //                 // API ARCHITECTURE
-        //                 $.ajax({
-        //                     url: '',
-        //                     dataTytpe: 'json',
-        //                     success: function(response) {
+        document.querySelector('#search-form').onsubmit = function() {
+            var user = document.querySelector('#search-term').value.trim();
 
-        //                     },
-        //                     error: function(err) {
-        //                         alert('AJAX error')
-        //                     }
 
-        //                 });
-        //
+            // Holy shit I did it
+            if (user.length > 0) {
+
+                $.ajax({
+                    url: 'https://data.messari.io/api/v1/assets/' + user + '/metrics',
+                    dataType: 'json',
+
+                    success: function(response) {
+
+                        // Clear old results
+                        document.querySelector('#search-term').value = '';
+
+                        createModal(response);
+                        // this works, use this to generate search results for modal
+                        // use this to make watchlist
+
+
+                        // alert(response.data.name)
+                        // alert(response.data.market_data.price_usd);
+
+
+
+
+                    },
+
+                    error: function(err) {
+                        alert('AJAX error')
+                        console.log(err);
+                    }
+                });
+
+
+            }
+            return false;
+        }
+
+
+        function createModal(crypto) {
+            // establish event for modal
+
+
+
+            var source = document.querySelector('#handlebarsTemplate').innerHTML;
+            var template = Handlebars.compile(source);
+
+
+            document.querySelector('#newModal').innerHTML = template(crypto);
+
+
+
+            console.log(crypto)
+                // var price = crypto.market_data.price_usd;
+                // var name = crypto.name;
+
+            // <div class="modal" tabindex="-1">
+            // <div class="modal-dialog">
+            //     <div class="modal-content">
+            //     <div class="modal-header">
+            //         <h5 class="modal-title">Modal title</h5>
+            //         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            //     </div>
+            //     <div class="modal-body">
+            //         <p>Modal body text goes here.</p>
+            //     </div>
+            //     <div class="modal-footer">
+            //         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            //     </div>
+            //     </div>
+            // </div>
+            // </div>
+
+
+
+
+
+
+            // var container = document.createElement('div');
+            // var container1 = document.createElement('div');
+            // var container2 = document.createElement('div');
+            // var container3 = document.createElement('div');
+            // var container4 = document.createElement('div');
+            // var container5 = document.createElement('div');
+            // var modalClose = document.createElement('button');
+            // var h5 = document.createElement('h5');
+            // var buttonClose = document.createElement('button');
+            // var p = crypto.name;
+
+            // container.classList.add('modal');
+            // container1.classList.add('modal-dialog');
+            // container2.classList.add('modal-content');
+            // container3.classList.add('modal-header');
+            // h5.classList.add('modal-title');
+            // modalClose.classList.add('btn-close');
+
+            // container4.classList.add('modal-body');
+            // container5.classList.add('modal-footer');
+            // buttonClose.classList.add('btn btn-secondary')
+
+            // container4.append(p)
+
+        }
     </script>
 </body>
 
