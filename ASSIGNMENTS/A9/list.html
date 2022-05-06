@@ -24,9 +24,9 @@
             <li class="nav-item">
                 <a class="nav-link active" href="index.html">Home</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="news.html">News</a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link" href="list.html">Watchlist</a>
             </li>
@@ -44,15 +44,18 @@
         <h3 style="color: aliceblue; text-align: center;">TRACK YOUR CRYPTO</h3>
 
         <div class="row">
-            <form class="d-flex" style="margin-top: 125px;">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <form id="search-form" class="d-flex" style="margin-top: 75px;">
+                <input id="search-term" class="form-control" type="search" placeholder="Search" aria-label="Search" style="width: 100px;">
                 <button class="btn btn-outline-success" type="submit">Add</button>
+                <button id="simple-delete" class="btn btn-outline-danger">Delete All</button>
             </form>
         </div>
         <div class="container">
+
             <script>
                 timeZone()
             </script>
+
             <table class="table table-striped table-dark">
                 <thead>
                     <tr>
@@ -60,61 +63,28 @@
                         <th scope="col">Crypto</th>
                         <th scope="col">Price</th>
                         <th scope="col">Market Cap</th>
-                        <th scope="col">1d</th>
-                        <td class="badge badge-pill badge-danger"></td>
+                        <th scope="col">24hr % Change</th>
+                        <!-- <th scope="col">24 High</th>
+                        <th scope="col">24 Low</th> -->
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="list">
+
+                </tbody>
+                <!-- <tbody>
                     <tr>
                         <th scope="row">1</th>
                         <td>Bitcoin</td>
                         <td>$40,781.34</td>
                         <td>$775,488,804,654</td>
-                        <td>Up: 4.6% <span class="badge badge-pill badge-danger">X</span></td>
+                        <td>Up: 4.6% </td>
                     </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td></td>
-                        <td>$</td>
-                        <td>$</td>
-                        <td>%</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td></td>
-                        <td>$</td>
-                        <td>$</td>
-                        <td>%</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td></td>
-                        <td>$</td>
-                        <td>$</td>
-                        <td>%</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td></td>
-                        <td>$</td>
-                        <td>$</td>
-                        <td>%</td>
-                    </tr>
-                </tbody>
+                </tbody> -->
+
 
             </table>
         </div>
     </div>
-
-
 
 
 
@@ -126,7 +96,84 @@
 
     <!-- Add the scaffolding for the static pages -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js "></script>
+
     <script>
+        document.querySelector('#simple-delete').onclick = function() {
+            document.querySelector('table tbody').innerHTML = '';
+        }
+        document.querySelector('#search-form').onsubmit = function() {
+            var user = document.querySelector('#search-term').value.trim();
+
+
+            // Holy shit I did it
+            if (user.length > 0) {
+
+                $.ajax({
+                    url: 'https://data.messari.io/api/v1/assets/' + user + '/metrics',
+                    dataType: 'json',
+
+                    success: function(response) {
+
+                        // Clear old results
+                        document.querySelector('#search-term').value = '';
+                        // alert(response.data.market_data.price_usd)
+                        createList(response.data);
+
+
+                    },
+
+                    error: function(err) {
+                        alert('AJAX error')
+                        console.log(err);
+                    }
+                });
+
+
+            }
+            return false;
+        }
+
+
+        function createList(crypto) {
+            // establish event for modal
+
+
+            var container = document.createElement('tr');
+            var blank = document.createElement('td');
+            var symbol = document.createElement('td');
+            var price = document.createElement('td');
+            var cap = document.createElement('td');
+            var hours = document.createElement('td');
+
+
+
+            blank.innerHTML = '';
+            symbol.innerHTML = crypto.name;
+            price.innerHTML = crypto.market_data.price_usd;
+            cap.innerHTML = crypto.marketcap.current_marketcap_usd;
+            hours.innerHTML = crypto.market_data.percent_change_usd_last_24_hours + '  %';
+
+            container.append(blank);
+            container.append(symbol);
+            container.append(price);
+            container.append(cap);
+            container.append(hours);
+
+
+            document.querySelector('#list').appendChild(container);
+
+
+            // var source = document.querySelector('#handlebarsTemplate').innerHTML;
+            // var template = Handlebars.compile(source);
+            // var newTab = template(crypto).innerHTML;
+
+
+            // document.querySelector('tbody').append(newTab);
+
+
+            // console.log(crypto)
+
+        }
     </script>
 </body>
 

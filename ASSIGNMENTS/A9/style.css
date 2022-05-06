@@ -121,3 +121,25 @@ footer {
     margin: auto;
     text-align: center;
 }
+
+#modalSymbol {
+    font-size: 2em;
+}
+
+#modalPrice {
+    font-size: 2em;
+}
+
+.modal-header {
+    background-color: #eeeeee;
+}
+
+#search-term {
+    width: 300px;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+
+#main-search {
+    border-radius: 15px;
+}

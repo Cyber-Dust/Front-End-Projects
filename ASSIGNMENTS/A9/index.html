@@ -23,9 +23,9 @@
             <li class="nav-item">
                 <a class="nav-link active" href="index.html">Home</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="news.html">News</a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link" href="list.html">Watchlist</a>
             </li>
@@ -47,14 +47,14 @@
     <div class="container" id="homepage">
         <div class="jumbotron jumbotron" style="margin-top: 100px; text-align: center;">
             <div class="container" id="edit">
-                <h1 class="display-4">GO AHEAD, SEARCH FOR WHICH YOU SEEK?</h1>
-                <p class="lead">"Imagination will often carry us to worlds that never were. But without it we go nowhere. -Carl Sagan</p>
+                <h1 class="display-4">GO AHEAD, LOOK UP ANY CRYPTOCURRENCY YOU DESIRE?</h1>
+                <p class="lead">"Imagination will often carry us to worlds that never were. But without it we go nowhere." -Carl Sagan</p>
             </div>
             <div class="row">
                 <form id="search-form" class="d-flex">
-                    <input type="text" id="search-term" class="form-control" placeholder="Search...">
-                    <button class="btn btn-outline-success" type="submit" data-toggle="modal" data-target="#newModal">Search</button>
-                    <!-- <datalist id="datalistOptions ">
+                    <input type="text" id="search-term" class="form-control" placeholder="Search">
+                    <button class="btn btn-outline-success" type="submit" id="main-search" data-toggle="modal" data-target="#newModal">Search<i class="bi bi-search"></i></button>
+                    <!-- <datalist id="datalist">
                         <option value="Bitcoin ">
                         <option value="Ethereum ">
                         <option value="Solana ">
@@ -102,12 +102,12 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">{{this.name}}</h5>
+                    <h5 class="modal-title" id="modalSymbol">{{this.name}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                 </div>
                 <div class="modal-body">
-                    <p>{{this.market_data.price_usd}}</p>
+                    <p id="modalPrice">$: {{this.market_data.price_usd}}</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -133,17 +133,11 @@
 
                         // Clear old results
                         document.querySelector('#search-term').value = '';
-
                         createModal(response);
                         // this works, use this to generate search results for modal
                         // use this to make watchlist
-
-
                         // alert(response.data.name)
                         // alert(response.data.market_data.price_usd);
-
-
-
 
                     },
 
@@ -171,56 +165,7 @@
             document.querySelector('#newModal').innerHTML = template(crypto);
 
 
-
-            console.log(crypto)
-                // var price = crypto.market_data.price_usd;
-                // var name = crypto.name;
-
-            // <div class="modal" tabindex="-1">
-            // <div class="modal-dialog">
-            //     <div class="modal-content">
-            //     <div class="modal-header">
-            //         <h5 class="modal-title">Modal title</h5>
-            //         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            //     </div>
-            //     <div class="modal-body">
-            //         <p>Modal body text goes here.</p>
-            //     </div>
-            //     <div class="modal-footer">
-            //         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            //     </div>
-            //     </div>
-            // </div>
-            // </div>
-
-
-
-
-
-
-            // var container = document.createElement('div');
-            // var container1 = document.createElement('div');
-            // var container2 = document.createElement('div');
-            // var container3 = document.createElement('div');
-            // var container4 = document.createElement('div');
-            // var container5 = document.createElement('div');
-            // var modalClose = document.createElement('button');
-            // var h5 = document.createElement('h5');
-            // var buttonClose = document.createElement('button');
-            // var p = crypto.name;
-
-            // container.classList.add('modal');
-            // container1.classList.add('modal-dialog');
-            // container2.classList.add('modal-content');
-            // container3.classList.add('modal-header');
-            // h5.classList.add('modal-title');
-            // modalClose.classList.add('btn-close');
-
-            // container4.classList.add('modal-body');
-            // container5.classList.add('modal-footer');
-            // buttonClose.classList.add('btn btn-secondary')
-
-            // container4.append(p)
+            // console.log(crypto)
 
         }
     </script>
